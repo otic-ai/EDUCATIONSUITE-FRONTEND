@@ -16,6 +16,7 @@ import FormListView from './Components/FormListView';
 import Signup from './Components/Signup';
 import LoginForm from './Components/Login';
 import {AuthProvider} from './utils/AuthContext';
+import CreateForm from './Components/CreateForm';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
  <Route exct  path="/" element={<FormListView />} />
  <Route exct  path="/login" element={<LoginForm />} />
  <Route exact path="/signup" element={<Signup />} />
+ <Route exact path="/createForm" element={<CreateForm />} />
  <Route exact path="/formview/:pk" element={authenticated ? <FormFillPage />: <Navigate to='login' />} />
  
 </Routes>

@@ -35,17 +35,19 @@ const FormListView = () => {
       };
   
       fetchData();
-    }, [names]);
+    }, []);
   
     return (
       <div>
         <button onClick={logoutUser} >logout</button>
+        <Link to='/createForm' >Create Form</Link>
         <h1>Available Forms</h1>
         
           {names.map((name, index) => (
             <ul>
              
                 <li>  <Link to={`/formview/${name.id}`} key={index}>{name.name}</Link>  </li>
+           
             </ul>
         
           ))}
