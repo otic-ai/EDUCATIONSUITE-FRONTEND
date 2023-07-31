@@ -1,13 +1,215 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+background: #F7F7FA;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*landingpage*/
+.landing .header{
+  background: white;
+  margin-left: 60px;
+  width: 1200px;
+}
+
+.landing .header .pricing{
+  display: flex;
+  gap: 17px;
+  margin-left: 280px;
+  margin-top: -80px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+}
+
+.landing .header .rightcorner{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 130px;
+  margin-top: -75px;
+  gap: 10px;
+  
+}
+
+.landing .header .rightcorner button{
+background: #1F12FD;
+border-radius: 4px;
+width: 172px;
+height: 42px;
+color: white;
+}
+
+.landing .unlock h1{
+width: 500px;
+margin-top: 80px;
+height: 228px;
+flex-shrink: 0;
+color: var(--gray-900, #18181B);
+font-family: Plus Jakarta Sans;
+font-size: 48px;
+font-style: normal;
+font-weight: 800;
+line-height: 66px; 
+margin-left: 80px;
+}
+.landing .unlock img{
+width: 68.934px;
+height: 61.034px;
+flex-shrink: 0;
+border-radius: 68.934px;
+border: 2px solid var(--base-white, #FFF);
+}
+.landing .unlock .image1{
+  margin-left: 100px;
+}
+
+.landing .unlock p{
+  width: 427.91px;
+height: 64.489px;
+flex-shrink: 0;
+  margin-top: -65px;
+  margin-left: 340px;
+  color: var(--gray-900, #18181B);
+/* PJ/Regular/18px */
+font-family: Plus Jakarta Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px; 
+
+}
+
+.landing .unlock .buttons{
+display: flex;
+padding: 16px;
+gap: 10px;
+flex-shrink: 0;
+margin-left: 80px;
+}
+
+.landing .unlock .buttons button{
+  width: 232.814px;
+  height: 64.489px;
+  border-radius: 10px;
+  background: var(--gray-900, #18181B);
+  color: white;
+}
+
+.landing .bars img{
+  margin-top: -470px;
+  margin-left: 780px;
+}
+
+
+/*billing*/
+.billing .header{
+  background: white;
+  margin-left: 60px;
+  width: 1200px;
+}
+
+.billing .header .pricing{
+  display: flex;
+  gap: 17px;
+  margin-left: 280px;
+  margin-top: -80px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+}
+
+.billing .header .rightcorner{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 130px;
+  margin-top: -75px;
+  gap: 10px;
+  
+}
+
+.billing .header .rightcorner button{
+background: #1F12FD;
+border-radius: 4px;
+width: 172px;
+height: 42px;
+color: white;
+}
+
+.billing .vector{
+  background: white;
+  margin-top: 15px;
+}
+
+.billing .vector .trial{
+  position: fixed;
+  margin-top: -240px;
+}
+
+.billing .vector h1{
+  text-align: center;
+  margin-top: 10px;
+  color: #000;
+}
+
+.billing .vector h3{
+  text-align: center;
+  margin-top: 10px;
+  color: #000;
+text-align: center;
+font-family: Poppins;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 180%;
+}
+
+.billing .vector .billbutton{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.billing .vector .billbutton .month{
+  background: #06F;
+  border-radius: 10px;
+  border: none;
+  height: 30px;
+  color: white;
+  width: 80px;
+}
+
+.billing .vector .billbutton .anual{
+  background: #F7F7FA;
+  border-radius: 10px;
+  height: 30px;
+  margin-left: -20px;
+  width: 80px;
+  border: none;
+  color: gray;
+}
+
+.billing .vector .options{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.billing .vector .options div{
+  position: sticky;
+  box-shadow: #1F12FD;
+  background: #F7F7FA;
+  border: white;
+  height: 300px;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.billing .vector .options .content .content1 li{
+  text-align: left;
+  margin-left: 15px;
 }
