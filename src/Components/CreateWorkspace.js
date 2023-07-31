@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-const Signup = () => {
+import AuthContext from '../utils/AuthContext';
+const Createworkspace = () => {
+  let {authTokens} = useContext(AuthContext);
   const history = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    contact: '',
-    gender: '',
-    email: '',
+    name: '',
+    contact1: '',
+    contact2: '',
+    location: '',
+    box: '',
+    email:''
   });
 
   const handleChange = (e) => {
@@ -20,10 +23,11 @@ const Signup = () => {
     // You can handle form submission here, e.g., make an API call to your backend
     try {
         // Make the POST request to your backend API using fetch
-        const response = await fetch('/api/signup', {
+        const response = await fetch('/institution/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authTokens.access}`,
           },
           body: JSON.stringify(formData),
         });
@@ -42,55 +46,62 @@ const Signup = () => {
 
   return (
     <div className="App">
-      <h1>Signup Page</h1>
+      <h1>Workspace Creation Page</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Institution Name:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="name"
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Phone Number 1:</label>
           <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
+            type="tel"
+            id="contact1"
+            name="contact1"
+            value={formData.contact1}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="contact">Contact:</label>
+          <label htmlFor="password">Phone Number 2:</label>
+          <input
+            type="tel"
+            id="contact2"
+            name="contact2"
+            value={formData.contact2}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="contact">location:</label>
           <input
             type="text"
-            id="contact"
-            name="contact"
-            value={formData.contact}
+            id="location"
+            name="location"
+            value={formData.location}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="gender">Gender:</label>
-          <select
-            id="gender"
-            name="gender"
-            value={formData.gender}
+          <label htmlFor="contact">P.O Box:</label>
+          <input
+            type="text"
+            id="box"
+            name="box"
+            value={formData.box}
             onChange={handleChange}
             required
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
+          />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
@@ -109,4 +120,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Createworkspace;
