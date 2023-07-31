@@ -214,20 +214,25 @@ line-height: 180%;
   margin-left: 15px;
 }
 
+/*LOGIN PAGE*/
+
 .login {
   background: white;
-  width: 60%;
+  width: 50em;
   height: 500px;
   margin: auto;
   margin-top: 70px;
   border-radius: 15px;
+}
+.login .forms form{
+  position: sticky;
 }
 
 .login .forms h1{
 display: flex;
 align-items: flex-end;
 margin-left: 45%;
-margin-top: -56%;
+margin-top: -57%;
 }
 
 .login .forms p{
@@ -238,7 +243,7 @@ margin-top: -56%;
 
   .login .forms .signin{
     margin-left: 46%;
-    margin-top: 30px;
+    margin-top: 18px;
   }
 
   .login .forms form{
@@ -273,7 +278,7 @@ margin-top: -56%;
   }
 
   .login .forms form button{
-    margin-top: 5px;
+    margin-top: -18px;
     height: 3em;
     background: #06F;
     border: none;
@@ -281,13 +286,70 @@ margin-top: -56%;
     color: white;
   }
 
+/*Creating account*/
+.divform{
+  background: white;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+  width: 70%;
+  height: 30em;
+}
 
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 10px;
 
+}
+form .fields{
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 10px;
+}
 
+form .fields input{
+  height: 35px;
+  width: 30%;
+  border: 2px solid #F7F7FA;
+  
+}
 
+form .fields1{
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 10px;
+}
 
+form .fields1 input{
+  height: 35px;
+  width: 80%;
+  border: 2px solid #F7F7FA;
+  
+}
+form .fields2{
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 10px;
+}
 
+form .fields2 input{
+  height: 35px;
+  width: 12.5%;
+  border: 2px solid #F7F7FA;
+  
+}
 
+form button{
+  background: #1F12FD;
+  border: none;
+  height: 50px;
+  border-radius: 15px;
+  color: white;
+  width: 60%;
+  margin: auto;
+}
 
 
 

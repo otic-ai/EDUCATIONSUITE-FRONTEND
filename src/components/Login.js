@@ -6,10 +6,10 @@ function Login() {
   return (
     <div className='login'>
     <div className='loginimage'>
-        <img src={login}/>
+        <img src={login} />
     </div>
     <div className='forms'>
-        <h1>Welcome to <img src={logo}/></h1>
+        <h1>Welcome to <img src={logo} /></h1>
         <p>Need an account? Sign Up</p> 
         <h1 className='signin'>Sign In</h1>
         <form>
