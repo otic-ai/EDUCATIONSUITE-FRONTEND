@@ -10,10 +10,7 @@ function Billing() {
             <p>Pricing</p>
             <p>Products</p>
             <p>Support</p>
-        </div>
-        <div className='rightcorner' >
             <p>Login</p>
-            <button>Get started</button>
         </div>
     </div>
     <div className='vector'>
@@ -33,7 +30,9 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
+                <button>Get started</button>
                 </div>
+                
             </div>
             <div className='content'>
                 <>Standard</>
@@ -44,6 +43,7 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
+                <button>Get started</button>
                 </div>
             </div>
             <div className='content'>
@@ -55,6 +55,7 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
+                <button>Get started</button>
                 </div>
             </div>
         </div>
