@@ -1,10 +1,10 @@
 body {
-background: #F7F7FA;
+
 }
 
 /*landingpage*/
 .landing .header{
-  background: white;
+  background: #F7F7FA;
   margin-left: 60px;
   width: 1200px;
 }
