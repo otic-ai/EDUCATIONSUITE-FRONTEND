@@ -219,7 +219,8 @@ line-height: 180%;
     background: white;
     margin: auto;
     padding: auto;
-    width: 50em;
+    width: 55em;
+    height: 50em;
   }
   
   .billing .header{
