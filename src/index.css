@@ -103,6 +103,8 @@ margin-left: 80px;
 
 /*billing*/
 .billing .header{
+  border: none;
+  position: sticky;
   background: white;
   margin-left: 60px;
   width: 1200px;
@@ -141,11 +143,6 @@ color: white;
 .billing .vector{
   background: white;
   margin-top: 15px;
-}
-
-.billing .vector .trial{
-  position: fixed;
-  margin-top: -240px;
 }
 
 .billing .vector h1{
@@ -215,7 +212,6 @@ line-height: 180%;
 }
 
 @media (max-width:500px){
- 
   .billing .vector{
     background: white;
     margin: auto;
