@@ -6,6 +6,10 @@ function Billing() {
     <div className='billing'>
     <div className='header'>
         <img src={logo}/>
+        <div className='nav-toggle' id='navToggle'>
+        <img id="navClosed" class="navIcon" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/hamburger.svg" alt="hamburger menu"/>
+        <img id="navOpen" class="navIcon hidden" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/close.svg" alt="close hamburger"/>
+        </div>
         <div className='pricing'>
             <p>Pricing</p>
             <p>Products</p>

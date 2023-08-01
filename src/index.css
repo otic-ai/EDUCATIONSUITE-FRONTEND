@@ -383,7 +383,27 @@ form button{
   width: 60%;
   margin: auto;
 }
+.billing .header .nav-toggle {
+  display: none;
+ justify-content: center;
+  cursor: pointer;
+}
 
+.billing .header .nav-toggle img {
+  width: 1.5rem;
+  transition: 300ms all ease;
+}
+
+.billing .header .nav-toggle:hover img {
+  opacity: 0.6;
+}
+
+@media all and (max-width:720px){
+  .billing .header .pricing{
+    flex-direction: column;
+    
+  }
+}
 
 
 
