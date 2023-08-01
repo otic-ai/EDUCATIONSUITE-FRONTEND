@@ -4,6 +4,7 @@ import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
 import landingpro from './images/landingpro.png'
+import { Link } from 'react-router-dom'
 
 function Landing() {
   return (
@@ -17,7 +18,7 @@ function Landing() {
         </div>
         <div className='rightcorner' >
             <p>Login</p>
-            <button>Get started</button>
+            <Link to={'/billing'}><button>Get started</button></Link>
         </div>
     </div>
     <div className='unlock'>
@@ -28,7 +29,7 @@ function Landing() {
     <p>Join with 4600+ Schools and start getting enchasing AI capabilities</p>
     <div className='buttons'>
       <button>Signin</button>
-      <button>Get started</button>
+      <Link to={'/billing'}><button>Get started</button></Link>
     </div>
     </div>
     <div className='bars'>
