@@ -142,6 +142,7 @@ color: white;
 .billing .vector{
   background: white;
   margin: auto;
+  width: 100%;
   padding: auto;
 }
 
