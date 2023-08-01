@@ -1,10 +1,10 @@
 body {
-
+background: #F7F7FA;
 }
 
 /*landingpage*/
 .landing .header{
-  background: #F7F7FA;
+  background: white;
   margin-left: 60px;
   width: 1200px;
 }
@@ -228,8 +228,8 @@ line-height: 180%;
 
 @media (max-width: 500px){
  .billing .vector .options .content .content1{
-  position: absolute;
-  width: auto;
+  position: relative;
+  width: 100%;
   height: auto;
  }
 }
