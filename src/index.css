@@ -152,6 +152,7 @@ color: white;
 }
 
 .billing .vector{
+  background: white;
   mix-blend-mode:multiply;
 }
 
