@@ -102,7 +102,6 @@ margin-left: 80px;
 
 
 /*billing*/
-
 .billing .header{
   background: white;
   margin-left: 60px;
@@ -141,9 +140,8 @@ color: white;
 
 .billing .vector{
   background: white;
-  margin: auto;
-  width: 100%;
-  padding: auto;
+  margin-top: 15px;
+  width: 70em;
 }
 
 .billing .vector .trial{
