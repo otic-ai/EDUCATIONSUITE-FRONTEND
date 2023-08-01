@@ -102,6 +102,19 @@ margin-left: 80px;
 
 
 /*billing*/
+.billing{
+    /* Set a minimum height to make sure the background is visible even if there is less content. */
+    min-height: 100vh;
+    /* Set a background color in case the SVG has transparent parts. */
+    background: white;
+    /* Position the background at the bottom and stretch it to cover the whole width. */
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto; 
+    /* Link to the SVG file using the relative path. */
+    background-image: url("components/vector.svg");
+   
+}
 .billing .header{
   background: white;
   margin-left: 60px;
@@ -139,8 +152,7 @@ color: white;
 }
 
 .billing .vector{
-  background: white;
-  margin-top: 15px;
+  mix-blend-mode:multiply;
 }
 
 .billing .vector .trial{
@@ -212,6 +224,14 @@ line-height: 180%;
 .billing .vector .options .content .content1 li{
   text-align: left;
   margin-left: 15px;
+}
+
+@media (max-width: 500px){
+ .billing .vector .options .content .content1{
+  position: absolute;
+  width: auto;
+  height: auto;
+ }
 }
 
 /*LOGIN PAGE*/
