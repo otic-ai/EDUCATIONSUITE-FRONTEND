@@ -215,12 +215,12 @@ line-height: 180%;
 }
 
 @media (max-width:500px){
+ 
   .billing .vector{
     background: white;
     margin: auto;
     padding: auto;
     width: 55em;
-    height: 140em;
   }
   
   .billing .header{
