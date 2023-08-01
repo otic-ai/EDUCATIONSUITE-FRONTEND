@@ -141,7 +141,6 @@ color: white;
 .billing .vector{
   background: white;
   margin-top: 15px;
-  width: 70em;
 }
 
 .billing .vector .trial{
@@ -213,6 +212,21 @@ line-height: 180%;
 .billing .vector .options .content .content1 li{
   text-align: left;
   margin-left: 15px;
+}
+
+@media (max-width:500px){
+  .billing .vector{
+    background: white;
+    margin: auto;
+    padding: auto;
+    width: 50em;
+  }
+  
+  .billing .header{
+    background: white;
+    margin: auto;
+    width: 55em;
+  }
 }
 
 /*LOGIN PAGE*/
