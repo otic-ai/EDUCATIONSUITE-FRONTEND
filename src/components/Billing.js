@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from './images/logo.png'
+import { Link } from 'react-router-dom'
 
 function Billing() {
   return (
@@ -8,7 +9,7 @@ function Billing() {
         <img src={logo}/>
         <div className='nav-toggle' id='navToggle'>
         <img id="navClosed" class="navIcon" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/hamburger.svg" alt="hamburger menu"/>
-        <img id="navOpen" class="navIcon hidden" src="https://www.richardmiddleton.me/wp-content/themes/richardcodes/assets/img/close.svg" alt="close hamburger"/>
+       
         </div>
         <div className='pricing'>
             <p>Pricing</p>
@@ -34,7 +35,7 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
-                <button>Get started</button>
+                <Link to={'/login'}><button>Get started</button></Link>
                 </div>
                 
             </div>
@@ -47,7 +48,7 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
-                <button>Get started</button>
+                <Link to={'/login'}><button>Get started</button></Link>
                 </div>
             </div>
             <div className='content'>
@@ -59,7 +60,7 @@ function Billing() {
                 <li>Unlimited projects</li> 
                 <br/>
                 <li>Extended Free Trial</li> 
-                <button>Get started</button>
+                <Link to={'/login'}><button>Get started</button></Link>
                 </div>
             </div>
         </div>
