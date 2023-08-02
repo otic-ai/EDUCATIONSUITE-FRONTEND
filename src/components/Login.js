@@ -1,6 +1,7 @@
 import React from 'react'
 import login from './images/login.png'
 import logo from './images/logo.png'
+import { Link } from 'react-router-dom'
 
 function Login() {
   return (
@@ -10,7 +11,7 @@ function Login() {
     </div>
     <div className='forms'>
         <h1>Welcome to <img src={logo} /></h1>
-        <p>Need an account? Sign Up</p> 
+        <p>Need an account? <Link to={'/register'}>Sign Up</Link></p> 
         <h1 className='signin'>Sign In</h1>
         <form>
             <label>Username *</label>
