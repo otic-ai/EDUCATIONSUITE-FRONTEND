@@ -1,0 +1,142 @@
+.pricing{
+display: flex;
+flex-direction: column;
+gap:0.5rem;
+text-align: center;
+position: relative;
+height: 100vh;
+}
+.pricing_plans{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+.pricing_plans_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:0.5rem;
+    font-size: 14px;
+ 
+}
+
+
+
+
+.cards{
+    display: flex;
+    padding: 0.5rem;
+    gap:1rem;
+    flex-wrap: wrap;
+    font-size: 16px;
+    justify-content: center;
+    
+
+    
+}
+.cardname{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 6px rgb(0, 0, 4);
+    border-radius: 5px;
+     background-color: #FFFFFF;
+}
+.cardname>div>span{
+    font-weight:bolder;
+}
+.cardname>div:nth-of-type(2){
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+   
+}
+
+.cardname>div:nth-of-type(2)>ul{
+    flex-direction: column;
+    gap:1rem;
+    display: flex;
+    list-style: none;
+}
+.card_button{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    color:rgb(255, 255, 255);
+    background-color: blue;
+    border-style: none;
+}
+.yelloimage{
+    /* background-color: greenyellow; */
+    width:100%;
+    bottom:0;
+    position: absolute;
+    z-index: 1;
+}
+.yelloimage>img{
+    object-fit: cover;
+    width: 100%;
+}
+
+  
+  .Monthly,
+  .Annually {
+    padding: 5px 10px;
+    background-color: #0814f2;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .Monthly{
+    background-color: #0814f2; 
+  }
+  .Annually{
+    background-color:rgb(209, 203, 203); 
+    color:black
+  }
+
+  
+
+@media screen and (max-width:768px){
+
+    .cards{
+        display: flex;
+        flex-direction:column;
+        padding: 0.5rem;
+        gap:1rem;
+        flex-wrap: wrap;
+    }
+    .pricing_plans_content{
+        padding: 2rem;
+        font-weight: 800;
+    }
+    .yelloimage{
+        /* background-color: greenyellow; */
+        width:100%;
+        bottom:0;
+        position: absolute;
+        z-index: 1;
+    }
+    .yelloimage>img{
+        object-fit: cover;
+        width: 100%;
+    }
+    .pricing{
+        display: flex;
+flex-direction: column;
+gap:0.5rem;
+text-align: center;
+position: relative;
+height: auto;
+    }
+}

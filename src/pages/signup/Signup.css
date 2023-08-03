@@ -1,0 +1,47 @@
+.signuppage{
+  background-color: #F7F7FA;
+  height:100vh;
+}
+.signupform{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.formcontrol{
+    /* background-color: yellow; */
+    display: flex;
+    gap:2rem;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+.formcontrol>div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.signup{
+    color:blue;
+    font-size: 18px;
+}
+
+input{
+    width: 100%;
+    border-radius: 3px;
+    border: 2px solid rgb(196, 191, 191);
+    height: 35px;
+}
+.formbutton{
+    width: 130px;
+}
+.required {
+    color: red;
+    margin-left: 5px;
+  }
