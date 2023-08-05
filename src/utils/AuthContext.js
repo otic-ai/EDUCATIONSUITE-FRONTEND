@@ -96,10 +96,10 @@ export const AuthProvider = ({children}) => {
         return ()=> clearInterval(interval)
 
     }, [authTokens, loading])
-
+// {loading ? null : children}
     return(
         <AuthContext.Provider value={contextData} >
-            {loading ? null : children}
+            {children}
         </AuthContext.Provider>
     )
 }
