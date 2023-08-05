@@ -54,7 +54,7 @@ const SingleWorkspaceView = () => {
         {names.map((name, index) => (
           <ul>
            
-              <li>  <Link to={`/workspaceview/${name.id}`} key={index}>{name.institution}</Link>  </li>
+              <li>  <a key={index}>{name.institution}</a>  </li>
          
           </ul>
       

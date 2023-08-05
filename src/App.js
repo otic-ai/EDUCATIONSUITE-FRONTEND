@@ -19,6 +19,9 @@ import {AuthProvider} from './utils/AuthContext';
 import CreateForm from './Components/CreateForm';
 import WorkspaceListView from './Components/ViewWorkspace';
 import SingleWorkspaceView from './Components/SingleWorkspace';
+import Signup from './Components/Signup';
+import FormDetails from './Components/FormDetails';
+import Table from './Components/TableView';
 
 
 function App() {
@@ -29,12 +32,14 @@ function App() {
   <AuthProvider>
    <Routes>
  
- <Route exct  path="/forms" element={<FormListView />} />
+ <Route exct  path="/forms/:id" element={<FormListView />} />
  <Route exact path="/" element={<WorkspaceListView />} />
  <Route exct  path="/login" element={<LoginForm />} />
+ <Route exct  path="/signup" element={<Signup />} />
  <Route exact path="/createworkspace" element={<Createworkspace />} />
  <Route exact path="/createForm" element={<CreateForm />} />
- <Route exact path="/formview/:pk" element={authenticated ? <FormFillPage />: <Navigate to='login' />} />
+ <Route exact path="/formdetails/:pk" element={<Table />} />
+ <Route exact path="/formview/:name/:pk" element={authenticated ? <FormFillPage />: <Navigate to='login' />} />
  <Route exact path="/workspaceview/:pk" element={ <SingleWorkspaceView />} />
  
 </Routes>

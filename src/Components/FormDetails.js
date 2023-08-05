@@ -3,8 +3,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
+import { useParams } from 'react-router-dom';
 
-const WorkspaceListView = () => {
+const FormDetails = () => {
+  const { pk } = useParams();
   let {logoutUser} = useContext(AuthContext);
   let {authTokens} = useContext(AuthContext);
   const history = useNavigate();
@@ -14,7 +16,7 @@ const WorkspaceListView = () => {
       // Function to make the API call
       const fetchData = async () => {
         try {
-          const response = await fetch('/institution/list/',
+          const response = await fetch(`/default/details/${pk}`,
           {
             method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
             headers: {
@@ -26,7 +28,7 @@ const WorkspaceListView = () => {
             throw new Error('Network response was not ok');
           }
           const jsonData = await response.json();
-          // Extracting 'name' property from each object
+         
           setNames(jsonData);
           
         } catch (error) {
@@ -40,21 +42,19 @@ const WorkspaceListView = () => {
     return (
       <div>
         <button onClick={logoutUser} >logout</button>
-        <Link to='/createworkspace' >Create Workspace</Link>
-        <Link to='/createForm' >Create Form</Link>
-        <h1>Available Workspace</h1>
+        <h1>Form Data</h1>
         
-          {names.map((name, index) => (
-            <ul>
-             
-                <li>  <Link to={`/forms/${name.id}`} key={index}>{name.institution}</Link>  </li>
+        {names.map((name, index) => (
+          <ul>
            
-            </ul>
-        
-          ))}
+              <li key={index}>  <a >{name.tableName}</a>  </li>
+         
+          </ul>
+      
+        ))}
        
       </div>
     );
 }
 
-export default WorkspaceListView
+export default FormDetails

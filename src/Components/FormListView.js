@@ -3,18 +3,20 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
+import { useParams } from 'react-router-dom';
 
 const FormListView = () => {
   let {logoutUser} = useContext(AuthContext);
   let {authTokens} = useContext(AuthContext);
+  const { id } = useParams();
   const history = useNavigate();
     const [names, setNames] = useState([]); // Initialize 'names' as an empty array
 
     useEffect(() => {
-      // Function to make the API call
+      // Function to make the API call /default/list/
       const fetchData = async () => {
         try {
-          const response = await fetch('/default/list/',
+          const response = await fetch(`/default/list/${id}`,
           {
             method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
             headers: {
@@ -46,7 +48,8 @@ const FormListView = () => {
           {names.map((name, index) => (
             <ul>
              
-                <li>  <Link to={`/formview/${name.id}`} key={index}>{name.name}</Link>  </li>
+                <li>  <Link to={`/formview/${name.tableName}/${name.id}`} key={index}>{name.name}</Link> 
+              <Link to={`/formdetails/${name.tableName}/`} >  <button>View Data</button></Link> </li>
            
             </ul>
         
