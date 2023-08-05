@@ -10,6 +10,7 @@ import pseudo from "../../assets/pseudo.png";
 import pseudodots from "../../assets/pseudodots.png";
 import freerectangle from "../../assets/freerectangle.png";
 import { Link } from "react-router-dom";
+import Admindash from "../../components/Admindash";
 const Login = () => {
   return (
     <div className="login">
@@ -59,7 +60,7 @@ const Login = () => {
             <button type="submit">Submit</button>
           </div>
         </form>
-        <p className="text_or">OR</p>
+       <Link to={'/admindash'}> <p className="text_or">OR</p></Link>
         <div className="social_media">
           <div>
             <a href="">
