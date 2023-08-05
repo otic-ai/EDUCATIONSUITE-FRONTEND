@@ -6,6 +6,7 @@ import Pricing from "./pages/Pricing/Pricing";
 import Landingpage from "./pages/landingpage/Landingpage.jsx";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import Admindash from './components/Admindash';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Signup" element={<Signup />} />
+        <Route path="/admindash" element={<Admindash />} />
       </Routes>
     </div>
   );
