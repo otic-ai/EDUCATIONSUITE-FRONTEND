@@ -60,7 +60,7 @@ const Login = () => {
             <button type="submit">Submit</button>
           </div>
         </form>
-       <Link to={'#'}> <p className="text_or">OR</p></Link>
+       <Link to={'/admin'}> <p className="text_or">OR</p></Link>
         <div className="social_media">
           <div>
             <a href="">
