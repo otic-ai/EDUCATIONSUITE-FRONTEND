@@ -1,0 +1,32 @@
+.header{
+    width: 100%;
+    height: 30px;
+    background: white;
+    padding: 10px;
+    height: 5em;
+    margin-left: -6px;
+    margin-top: -7px;
+  }
+
+  .header button{
+    position: absolute;
+    margin-top: 2.7em;
+    height:2em;
+    width: 2em;
+    margin-left: 2em;
+    background: blue;
+    border-radius: 6px;
+    border: none;
+    color: white;
+  }
+
+
+  .header form input{
+    height: 2em;
+    width: 20%;
+    margin-left: 20em;
+    margin-top: -4em;
+    background: #F7F7FA;
+    border: 1px solid gray;
+    border-radius: 7px;
+  }
