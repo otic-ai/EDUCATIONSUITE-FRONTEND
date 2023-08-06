@@ -70,7 +70,7 @@ function Admindash() {
     <div className='tabs1'>
         <div className='tabs12'>
         <LineChart className='linechart'
-          width={500}
+          width={390}
           height={300}
           data={data}
           margin={{
@@ -89,7 +89,7 @@ function Admindash() {
           <Line type="monotone" dataKey="uv" stroke="#faa51a" />
         </LineChart>
         <BarChart className='linechart'
-          width={500}
+          width={390}
           height={300}
           data={data}
           margin={{

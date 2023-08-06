@@ -53,10 +53,6 @@
       position: relative;
     }
     .tabs{
-      gap: 2rem;
-    }
-    .tabs1 .tabs12 .linechart{
-      height: auto;
-      width: auto;
+      gap: 1rem;
     }
   }
