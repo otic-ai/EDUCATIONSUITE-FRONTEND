@@ -5,9 +5,11 @@ import { Survey } from 'survey-react-ui';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AuthContext from '../utils/AuthContext';
+import LoadingSpinner from './LoadSpin';
 
 const SingleWorkspaceView = () => {
-    let {authTokens} = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
+    let {authTokens, proxy} = useContext(AuthContext);
   const [names, setNames] = useState([]); // Initialize 'names' as an empty array
   const [form, setForm] = useState([]);
   const { pk } = useParams();
@@ -15,7 +17,7 @@ const SingleWorkspaceView = () => {
     // Function to make the API call
     const fetchData = async () => {
       try {
-        const response = await fetch( `institution/view/${pk}/`,
+        const response = await fetch( `${proxy}/institution/view/${pk}/`,
         {
           method:'GET',
           headers:{
@@ -27,11 +29,12 @@ const SingleWorkspaceView = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        setLoading(true)
         const jsonData = await response.json();
        // Extracting 'name' property from each object
         setNames(jsonData);
         setForm(jsonData.institution)
-       
+        setLoading(false)
       } catch (error) {
         alert('Error fetching data:', error);
       }
@@ -50,8 +53,8 @@ const SingleWorkspaceView = () => {
 
   return <div>
      <h1>Available Workspace</h1>
-        
-        {names.map((name, index) => (
+      { loading ? <LoadingSpinner /> : <div>
+      {names.map((name, index) => (
           <ul>
            
               <li>  <a key={index}>{name.institution}</a>  </li>
@@ -59,6 +62,8 @@ const SingleWorkspaceView = () => {
           </ul>
       
         ))}
+      </div> }  
+       
   </div>;
 }
 

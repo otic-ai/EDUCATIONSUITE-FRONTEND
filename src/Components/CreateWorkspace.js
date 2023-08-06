@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
 const Createworkspace = () => {
-  let {authTokens} = useContext(AuthContext);
+  let {authTokens, proxy} = useContext(AuthContext);
   const history = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -23,7 +23,7 @@ const Createworkspace = () => {
     // You can handle form submission here, e.g., make an API call to your backend
     try {
         // Make the POST request to your backend API using fetch
-        const response = await fetch('/institution/signup', {
+        const response = await fetch(`${proxy}/institution/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

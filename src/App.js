@@ -22,6 +22,7 @@ import SingleWorkspaceView from './Components/SingleWorkspace';
 import Signup from './Components/Signup';
 import FormDetails from './Components/FormDetails';
 import Table from './Components/TableView';
+import LoadingSpinner from './Components/LoadSpin';
 
 
 function App() {
@@ -31,7 +32,6 @@ function App() {
  return <BrowserRouter>
   <AuthProvider>
    <Routes>
- 
  <Route exct  path="/forms/:id" element={<FormListView />} />
  <Route exact path="/" element={<WorkspaceListView />} />
  <Route exct  path="/login" element={<LoginForm />} />

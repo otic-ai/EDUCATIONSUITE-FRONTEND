@@ -8,15 +8,16 @@ export default AuthContext;
 
 
 export const AuthProvider = ({children}) => {
+    const proxy = 'https://somesai-backend.azurewebsites.net'
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
-    
+    let [jsonData, setJsonData] = useState([])
     const history = useHistory()
 
     let loginUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch('/api/token/', {
+        let response = await fetch(`${proxy}/api/token/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -24,7 +25,7 @@ export const AuthProvider = ({children}) => {
             body:JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
         })
         let data = await response.json()
-
+         setJsonData(data)
         if(response.status === 200){
             setAuthTokens(data)
             
@@ -48,7 +49,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async ()=> {
 
-        let response = await fetch('/api/token/refresh/', {
+        let response = await fetch(`${proxy}/api/token/refresh/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -58,6 +59,7 @@ export const AuthProvider = ({children}) => {
 
         let data = await response.json()
         
+        setJsonData(data)
         if (response.status === 200){
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
@@ -76,12 +78,13 @@ export const AuthProvider = ({children}) => {
         authTokens:authTokens,
         loginUser:loginUser,
         logoutUser:logoutUser,
+        proxy:proxy
         
     }
 
 
     useEffect(()=> {
-
+        
         if(loading){
             updateToken()
         }

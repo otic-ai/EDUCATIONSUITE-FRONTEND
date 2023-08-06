@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
 import { useParams } from 'react-router-dom';
-
+import LoadingSpinner from './LoadSpin';
 
 const Table = () => {
+  const [loading, setLoading] = useState(true)
   const [data, setData] = useState([]);
   const { pk } = useParams();
-  let {logoutUser} = useContext(AuthContext);
-  let {authTokens} = useContext(AuthContext); 
+  let {authTokens, proxy} = useContext(AuthContext); 
 
   useEffect(() => {
     // Function to make the API call
-    const fetchData = async () => {
+    const fetchDatas = async () => {
       try {
-        const response = await fetch(`/default/details/${pk}`,
+        const response = await fetch(`${proxy}/default/formdetails/${pk}/`,
         {
           method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
           headers: {
@@ -26,24 +26,31 @@ const Table = () => {
           },
         }); // Replace with your API URL
         if (!response.ok) {
+          
           throw new Error('Network response was not ok');
+          
         }
+        setLoading(true)
         const jsonData = await response.json();
        
         setData(jsonData);
-        
+        setLoading(false)
         
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchData();
+    fetchDatas();
+    
   }, []);
 
   return (
+   
     <div>
-      <table>
+      
+      <div>Form Details</div>
+      {loading ? <LoadingSpinner /> :   <table>
         <thead>
           <tr>
             {data.length > 0 && Object.keys(data[0]).map((key, index) => (
@@ -60,7 +67,8 @@ const Table = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table>  }
+    
     </div>
   );
 };

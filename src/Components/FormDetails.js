@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
 import { useParams } from 'react-router-dom';
+import LoadingSpinner from './LoadSpin';
 
 const FormDetails = () => {
   const { pk } = useParams();
   let {logoutUser} = useContext(AuthContext);
-  let {authTokens} = useContext(AuthContext);
+  let {authTokens, proxy} = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
   const history = useNavigate();
     const [names, setNames] = useState([]); // Initialize 'names' as an empty array
 
@@ -16,7 +18,7 @@ const FormDetails = () => {
       // Function to make the API call
       const fetchData = async () => {
         try {
-          const response = await fetch(`/default/details/${pk}`,
+          const response = await fetch(`${proxy}/default/details/${pk}`,
           {
             method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
             headers: {
@@ -27,10 +29,10 @@ const FormDetails = () => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
+          setLoading(true)
           const jsonData = await response.json();
-         
           setNames(jsonData);
-          
+          setLoading(false);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -43,7 +45,7 @@ const FormDetails = () => {
       <div>
         <button onClick={logoutUser} >logout</button>
         <h1>Form Data</h1>
-        
+        {loading ? <LoadingSpinner /> : <div>
         {names.map((name, index) => (
           <ul>
            
@@ -51,7 +53,8 @@ const FormDetails = () => {
          
           </ul>
       
-        ))}
+        ))}</div>}
+       
        
       </div>
     );

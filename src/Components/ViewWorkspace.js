@@ -3,10 +3,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
+import LoadingSpinner from './LoadSpin';
 
 const WorkspaceListView = () => {
+  const [loading, setLoading] = useState(true)
   let {logoutUser} = useContext(AuthContext);
-  let {authTokens} = useContext(AuthContext);
+  let {authTokens, proxy} = useContext(AuthContext);
   const history = useNavigate();
     const [names, setNames] = useState([]); // Initialize 'names' as an empty array
 
@@ -14,7 +16,7 @@ const WorkspaceListView = () => {
       // Function to make the API call
       const fetchData = async () => {
         try {
-          const response = await fetch('/institution/list/',
+          const response = await fetch(`${proxy}/institution/list/`,
           {
             method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
             headers: {
@@ -25,10 +27,11 @@ const WorkspaceListView = () => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
+          setLoading(true)
           const jsonData = await response.json();
           // Extracting 'name' property from each object
           setNames(jsonData);
-          
+          setLoading(false)
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -41,11 +44,11 @@ const WorkspaceListView = () => {
       <div>
         <button onClick={logoutUser} >logout</button>
         <Link to='/createworkspace' >Create Workspace</Link>
-        <Link to='/createForm' >Create Form</Link>
+        <div style={{width:'20px'}}></div>
         <Link to='/signup' >Signup</Link>
         <h1>Available Workspace</h1>
-        
-          {names.map((name, index) => (
+        {loading ? <LoadingSpinner /> : <div>
+        {names.map((name, index) => (
             <ul>
              
                 <li>  <Link to={`/forms/${name.id}`} key={index}>{name.institution}</Link>  </li>
@@ -53,7 +56,8 @@ const WorkspaceListView = () => {
             </ul>
         
           ))}
-       
+       </div>}
+        
       </div>
     );
 }

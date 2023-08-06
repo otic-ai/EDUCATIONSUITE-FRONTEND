@@ -9,7 +9,7 @@ const CreateForm = () => {
     design:'',
     allowed:''
   })
-  let {authTokens} = useContext(AuthContext);
+  let {authTokens, proxy} = useContext(AuthContext);
   const handleChange =(event)=>{
     const {name, value} = event.target;
     setFormData((prevFormData)=>({
@@ -21,7 +21,7 @@ const CreateForm = () => {
     e.preventDefault();
     const jsonData = JSON.stringify(formData)
     try {
-      const response = await fetch('/default/createform/',
+      const response = await fetch(`${proxy}/default/createform/`,
       {
         method: 'POST', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
         headers: {

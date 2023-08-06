@@ -1,6 +1,5 @@
 {
   "name": "front",
-  "proxy": "https://somesai-backend.azurewebsites.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
