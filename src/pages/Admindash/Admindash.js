@@ -68,9 +68,10 @@ function Admindash() {
         <p>Revenue< FontAwesomeIcon className="menu" icon={faMoneyBill}/></p>
     </div>
     <div className='tabs1'>
-        <div className='tabs12'>
+      <div className="tabs12">
+        <ResponsiveContainer  width="100%" height={300} >
         <LineChart className='linechart'
-          width={390}
+          width={500}
           height={300}
           data={data}
           margin={{
@@ -88,8 +89,12 @@ function Admindash() {
           <Line type="monotone" dataKey="pv" stroke="#040458" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="uv" stroke="#faa51a" />
         </LineChart>
+        </ResponsiveContainer >
+        <div/>
+        <div className="tabs12">
+        <ResponsiveContainer  width="100%" height={300}>
         <BarChart className='linechart'
-          width={390}
+          width={500}
           height={300}
           data={data}
           margin={{
@@ -107,6 +112,7 @@ function Admindash() {
           <Bar dataKey="pv" fill="#040458" background={{ fill: '#eee' }} />
           <Bar dataKey="uv" fill="#faa51a" />
         </BarChart>
+        </ResponsiveContainer>
         </div>
         
         <div className='tabs12'>
@@ -114,6 +120,7 @@ function Admindash() {
         <p>Star students</p>
         </div>
         </div>
+    </div>
     </div>
   )
     
