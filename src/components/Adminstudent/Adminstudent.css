@@ -1,0 +1,33 @@
+
+.payments table,
+.payments_effected table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.payments th, 
+.payments td,
+.payments_effected th,
+.payments_effected td{
+    text-align: left;
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+td{
+    background: white;
+}
+th{
+    padding: 15px;
+    background: #040458;
+    color: white;
+}
+.payments tr:nth-child(even),
+.payments_effected tr:nth-child(even){
+    background: #dddddd;
+}
+.payments h1{
+    padding: 10px 0;
+    font-size: 1.5rem;
+}
+.payments{
+    padding: 0 5%;
+}

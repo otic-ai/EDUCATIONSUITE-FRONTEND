@@ -47,4 +47,7 @@ gap: 1rem;
     list-style: none;
     gap: 1rem;
   }
-  
+  .sidebar .sticky{
+    position: sticky;
+    top: 0;
+  }
