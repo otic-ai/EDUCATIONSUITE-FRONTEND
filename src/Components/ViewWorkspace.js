@@ -46,7 +46,7 @@ const WorkspaceListView = () => {
         <button onClick={logoutUser} >logout</button>
         <Link to='/createworkspace' >Create Workspace</Link>
         <div style={{width:'20px'}}></div>
-        <Link to='/signup' >Signup</Link>
+       
         <h1>Available Workspace</h1>
         {loading ? <LoadingSpinner /> : <div>
         {names.map((name, index) => (
