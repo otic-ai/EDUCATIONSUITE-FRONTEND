@@ -8,6 +8,7 @@ import AuthContext from '../utils/AuthContext';
 import LoadingSpinner from './LoadSpin';
 
 const SingleWorkspaceView = () => {
+  localStorage.setItem('sign', true)
   const [loading, setLoading] = useState(true)
     let {authTokens, proxy} = useContext(AuthContext);
   const [names, setNames] = useState([]); // Initialize 'names' as an empty array

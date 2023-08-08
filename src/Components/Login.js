@@ -1,6 +1,7 @@
 // LoginForm.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import AuthContext from '../utils/AuthContext';
 const LoginForm = () => {
   let {loginUser, proxy} = useContext(AuthContext);
@@ -46,6 +47,7 @@ const LoginForm = () => {
         />
       </div>
       <button type="submit">Login</button>
+      <Link to='/signup'><button >Signup</button></Link>
     </form>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../utils/AuthContext';
 const Createworkspace = () => {
+  localStorage.setItem('sign', true)
   let {authTokens, proxy} = useContext(AuthContext);
   const history = useNavigate();
   const [formData, setFormData] = useState({

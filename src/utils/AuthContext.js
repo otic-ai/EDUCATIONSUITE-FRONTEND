@@ -8,7 +8,7 @@ export default AuthContext;
 
 
 export const AuthProvider = ({children}) => {
-    const proxy = 'https://somesai-backend.azurewebsites.net'
+    const proxy = 'http://127.0.0.1:8000'
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
@@ -30,7 +30,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             
             setUser(jwt_decode(data.access))
-        
+             localStorage.setItem('sign', true)
             localStorage.setItem('authTokens', JSON.stringify(data))
             history('/')
         }else{
@@ -40,10 +40,15 @@ export const AuthProvider = ({children}) => {
 
 
     let logoutUser = () => {
+        const signs = localStorage.getItem('sign')
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
-        history('/login')
+       
+       // if ( signs === 'true'){
+           history('/login')   
+       
+        
     }
 
 
@@ -61,9 +66,16 @@ export const AuthProvider = ({children}) => {
         
         setJsonData(data)
         if (response.status === 200){
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
+            if (Object.keys(jsonData).includes('detail')) {
+                logoutUser()
+            } else {
+                setAuthTokens(data)
+                setUser(jwt_decode(data.access))
+                localStorage.setItem('authTokens', JSON.stringify(data))
+          
+            }
+                
+          
         }else{
             logoutUser()
         }
@@ -89,7 +101,7 @@ export const AuthProvider = ({children}) => {
             updateToken()
         }
 
-        let fourMinutes = 1000 * 60 * 4
+        let fourMinutes = 1000 * 60 * 20
 
         let interval =  setInterval(()=> {
             if(authTokens){

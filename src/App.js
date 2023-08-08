@@ -6,10 +6,7 @@ import FormFillPage from './Components/FormFillPage';
 import {
   Routes,
   Route,
-  Router,
   BrowserRouter,
-  useNavigationType,
-  useLocation,
   Navigate
 } from "react-router-dom";
 import FormListView from './Components/FormListView';
@@ -20,9 +17,8 @@ import CreateForm from './Components/CreateForm';
 import WorkspaceListView from './Components/ViewWorkspace';
 import SingleWorkspaceView from './Components/SingleWorkspace';
 import Signup from './Components/Signup';
-import FormDetails from './Components/FormDetails';
 import Table from './Components/TableView';
-import LoadingSpinner from './Components/LoadSpin';
+
 
 
 function App() {
@@ -30,6 +26,7 @@ function App() {
 
 
  return <BrowserRouter>
+ 
   <AuthProvider>
    <Routes>
  <Route exct  path="/forms/:id" element={<FormListView />} />

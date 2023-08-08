@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingSpinner from './LoadSpin';
 
 const FormFillPage = () => {
+  localStorage.setItem('sign', true)
   const [loading, setLoading] = useState(true)
   let {authTokens,proxy} = useContext(AuthContext);
   const history = useNavigate();

@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import LoadingSpinner from './LoadSpin';
 
 const FormDetails = () => {
+  localStorage.setItem('sign', true)
   const { pk } = useParams();
   let {logoutUser} = useContext(AuthContext);
   let {authTokens, proxy} = useContext(AuthContext);

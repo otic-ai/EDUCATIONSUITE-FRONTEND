@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import LoadingSpinner from './LoadSpin';
 
 const FormListView = () => {
+  localStorage.setItem('sign', true)
   const [loading, setLoading] = useState(true)
   let {logoutUser} = useContext(AuthContext);
   let {authTokens,proxy} = useContext(AuthContext);

@@ -6,6 +6,7 @@ import AuthContext from '../utils/AuthContext';
 import LoadingSpinner from './LoadSpin';
 
 const WorkspaceListView = () => {
+  localStorage.setItem('sign', true)
   const [loading, setLoading] = useState(true)
   let {logoutUser} = useContext(AuthContext);
   let {authTokens, proxy} = useContext(AuthContext);

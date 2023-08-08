@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import LoadingSpinner from './LoadSpin';
 
 const Table = () => {
+  localStorage.setItem('sign', true)
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([]);
   const { pk } = useParams();
