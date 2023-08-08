@@ -5,6 +5,7 @@ import Landingpage from "./pages/landingpage/Landingpage.jsx";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Pricing" element={<Pricing />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Admin" element={<Admindashboard />} />
+          <Route path="/Teacher" element={<Teachersdash />} />
         </Routes>
       </BrowserRouter>
     </div>

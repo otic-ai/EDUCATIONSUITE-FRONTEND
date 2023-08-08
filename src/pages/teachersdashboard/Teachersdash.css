@@ -1,0 +1,8 @@
+.teachers_section{
+    display: flex;
+    height: auto;
+}
+aside{
+    flex:0.2;
+    background-color: yellow;
+}
