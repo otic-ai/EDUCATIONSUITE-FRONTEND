@@ -187,4 +187,7 @@ form>div>button{
         margin-left: 10%; 
         width: 80%;
     }
+    .login_right span p{
+        margin-left: -1.6em;
+    }
 }
