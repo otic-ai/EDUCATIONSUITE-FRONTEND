@@ -182,4 +182,9 @@ form>div>button{
     .remember_me p{
         margin-left: 15%; 
     }
+
+    .submitform button{
+        margin-left: 15%; 
+        width: 70%;
+    }
 }
