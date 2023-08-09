@@ -7,10 +7,12 @@ import Landingpage from "./pages/landingpage/Landingpage.jsx";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Admindash from './pages/Admindash/Admindash';
+import { AuthProvider } from './utils/AuthContext';
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/Login" element={<Login />} />
@@ -18,6 +20,8 @@ function App() {
         <Route path="/Signup" element={<Signup />} />       
         <Route path='/admin' element={<Admindash/>}/>
       </Routes>
+      </AuthProvider>
+      
     </div>
   );
 }
