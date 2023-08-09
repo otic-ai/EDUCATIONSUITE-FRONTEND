@@ -1,9 +1,12 @@
-import React from 'react'
+import React ,{useContext }from 'react'
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAward, faBars, faBell, faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
+import { faAward, faBars, faBell, faSignOut,faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
+import AuthContext from "../../utils/AuthContext";
+
 
 export default function Sidebar({open,onContentClick}) {
+  let {logoutUser, proxy} = useContext(AuthContext);
   return (
     <div className={open?"sidebar collapse":"sidebar"}>
       <button>Dashboard</button>
@@ -24,6 +27,7 @@ export default function Sidebar({open,onContentClick}) {
       <button>Pages</button>
       <ul className='content'>
       <li>< FontAwesomeIcon className="menu" icon={faShieldAlt}/>Authentication</li>
+      <li onClick={() => logoutUser()} >< FontAwesomeIcon className="menu" icon={faSignOut}/>Sign Out</li>
       </ul>
         
 
