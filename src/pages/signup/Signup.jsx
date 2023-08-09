@@ -135,16 +135,7 @@ const Signup = () => {
                onChange={handleChange}
               />
             </div>
-            <div>
-              <label>State/Province<span className="required">*</span></label>
-              <input type="text" 
-               id="state"
-               name="state"
-               value={formData.state}
-               onChange={handleChange}
-               required
-              />
-            </div>
+          
             <div>
               <label>Postal Code</label>
               <input type="text"
