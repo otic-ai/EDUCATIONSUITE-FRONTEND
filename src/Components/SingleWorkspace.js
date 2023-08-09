@@ -53,6 +53,7 @@ const SingleWorkspaceView = () => {
   survey.onComplete.add(alertResults);
 
   return <div>
+   
      <h1>Available Workspace</h1>
       { loading ? <LoadingSpinner /> : <div>
       {names.map((name, index) => (

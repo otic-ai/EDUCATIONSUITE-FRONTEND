@@ -18,6 +18,9 @@ import WorkspaceListView from './Components/ViewWorkspace';
 import SingleWorkspaceView from './Components/SingleWorkspace';
 import Signup from './Components/Signup';
 import Table from './Components/TableView';
+import AddUser from './Components/AddUser';
+import CreateDepartment from './Components/CreateDepartment';
+import DepartmentUser from './Components/DepartmentUser';
 
 
 
@@ -31,10 +34,13 @@ function App() {
    <Routes>
  <Route exct  path="/forms/:id" element={<FormListView />} />
  <Route exact path="/" element={<WorkspaceListView />} />
+ <Route exact path="/user_management/:id" element={<AddUser />} />
+ <Route exact path="/department_management/:id/:departmentname" element={<DepartmentUser />} />
  <Route exct  path="/login" element={<LoginForm />} />
  <Route exct  path="/signup" element={<Signup />} />
  <Route exact path="/createworkspace" element={<Createworkspace />} />
  <Route exact path="/createForm" element={<CreateForm />} />
+ <Route exact path="/createDepartment/:pk" element={<CreateDepartment />} />
  <Route exact path="/formdetails/:pk" element={<Table />} />
  <Route exact path="/formview/:name/:pk" element={authenticated ? <FormFillPage />: <Navigate to='login' />} />
  <Route exact path="/workspaceview/:pk" element={ <SingleWorkspaceView />} />

@@ -14,6 +14,34 @@ const FormListView = () => {
   const { id } = useParams();
   const history = useNavigate();
     const [names, setNames] = useState([]); // Initialize 'names' as an empty array
+    const [departments, setDepartments] = useState([]);
+  const availableDepartments = async ()=>{
+    try {
+      const response = await fetch(`${proxy}/availabledepartments/${id}`,
+      {
+        method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authTokens.access}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+     
+      setLoading(true)
+      const jsonData = await response.json();
+      // Extracting 'name' property from each object
+      setDepartments(jsonData);
+      setLoading(false)
+
+    }
+    catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
 
     useEffect(() => {
       // Function to make the API call /default/list/
@@ -41,12 +69,16 @@ const FormListView = () => {
       };
   
       fetchData();
+      availableDepartments(); 
     }, []);
   
     return (
       <div>
         <button onClick={logoutUser} >logout</button>
         <Link to='/createForm' >Create Form</Link>
+        <div style={{width:'20vw'}}> <Link to={`/user_management/${id}`} >User Management</Link></div>
+        <div style={{width:'20vw'}}> <Link to={`/createDepartment/${id}`} >Create Department</Link></div>
+          
         <h1>Available Forms</h1>
         {loading ? <LoadingSpinner /> : <div>
         {names.map((name, index) => (
@@ -58,7 +90,17 @@ const FormListView = () => {
             </ul>
         
           ))} </div> }
-         
+         <h1>Available Departments</h1>
+        {loading ? <LoadingSpinner /> : <div>
+        {departments.map((name, index) => (
+            <ul>
+             
+                <li>  <Link to={`/department_management/${id}/${name.name}`} key={index}>{name.name}</Link> 
+              </li>
+           
+            </ul>
+        
+          ))} </div> } 
        
       </div>
     );
