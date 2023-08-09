@@ -91,15 +91,57 @@ const Contacts = () => {
     <Box m="20px">
       <Box className="contact-form">
         <TextField
+          name="id"
+          label="ID"
+          value={newContact.id}
+          onChange={handleInputChange}
+        />
+        <TextField
+          name="registrarId"
+          label="Registrar ID"
+          value={newContact.regid}
+          onChange={handleInputChange}
+        />
+        <TextField
           name="name"
           label="Name"
           value={newContact.name}
+          onChange={handleInputChange}
+        />
+               <TextField
+          name="age"
+          label="Age"
+          value={newContact.age}
+          onChange={handleInputChange}
+        />
+                <TextField
+          name="phone"
+          label="Phone Number"
+          value={newContact.phonenumber}
           onChange={handleInputChange}
         />
         <TextField
           name="email"
           label="Email"
           value={newContact.email}
+          onChange={handleInputChange}
+        />
+                <TextField
+          name="address"
+          label="Address"
+          value={newContact.address}
+          onChange={handleInputChange}
+        />
+                <TextField
+          name="city"
+          label="City"
+          value={newContact.city}
+          onChange={handleInputChange}
+        />
+                <TextField
+          name="zipCode"
+          label="Zip Code"
+          value={newContact.zipcode}
           onChange={handleInputChange}
         />
         {/* Add more input fields for other contact details as needed */}
