@@ -15,6 +15,8 @@ import Adminteacher from '../../components/Adminteacher/Adminteacher';
 import Adminstudent from '../../components/Adminstudent/Adminstudent'; // Import the other content components here
 import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
+
+
 // Import other content components as needed
 
 function Admindash() {
@@ -54,6 +56,7 @@ function Admindash() {
       {selectedContent === 'teachers' && <Adminteacher />}
       {selectedContent === 'workspace' && <Adminworkspace />}
       {selectedContent === 'workspaces' && <Workspaces/>}
+      
       {/* Add more content components based on the selectedContent */}
       {/* For example: */}
       {/* {selectedContent === 'awards' && <AdminAwards />} */}
