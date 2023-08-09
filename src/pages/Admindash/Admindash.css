@@ -32,8 +32,11 @@
   @media (max-width: 550px) {
     /* Your styles for smaller screens */
     .tabs p{
-      min-width: 90vw;
+      width: 200px;
     }
+    .tabs{
+      
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));}
   }
 
   
