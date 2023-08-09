@@ -112,9 +112,7 @@ const handleChange = (e) => {
               <img src={facebook} alt="" />
             </a>
           </div>
-          <div className="adminlog">
-          <Link to={'/admin'}> <button>Login As Admin</button></Link>
-          </div>
+          
         </div>
       </div>
     </div>

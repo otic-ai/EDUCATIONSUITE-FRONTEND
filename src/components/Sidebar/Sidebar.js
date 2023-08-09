@@ -1,7 +1,7 @@
 import React ,{useContext }from 'react'
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAward, faBars, faBell, faSignOut,faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
+import { faAward, faBars, faBell,faReceipt, faSignOut,faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
 import AuthContext from "../../utils/AuthContext";
 
 
@@ -15,6 +15,8 @@ export default function Sidebar({open,onContentClick}) {
        <li onClick={() => onContentClick('students')}>< FontAwesomeIcon className="menu" icon={faGraduationCap}/>Students</li>
        <li onClick={() => onContentClick('teachers')}>< FontAwesomeIcon className="menu" icon={faChalkboardTeacher}/>Teachers</li>
        <li onClick={() => onContentClick('workspace')}>< FontAwesomeIcon className="menu" icon={faHotel}/>Workspace</li>
+       <li onClick={() => onContentClick('subjects')}>< FontAwesomeIcon className="menu" icon={faBookReader}/>Subjects</li>
+      
        <li>< FontAwesomeIcon className="menu" icon={faBookReader}/>Subjects</li>
       </ul>
       <button>Management</button>
