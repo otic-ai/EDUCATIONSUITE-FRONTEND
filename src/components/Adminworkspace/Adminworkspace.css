@@ -3,6 +3,9 @@
     margin: 40px 0 0 0;
     /* Add your form styles here */
   }
+  .contact-form label{
+    z-index: 0;
+  }
   
   .data-grid-container {
     border: none;
