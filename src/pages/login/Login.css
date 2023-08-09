@@ -176,4 +176,10 @@ form>div>button{
     .login_right span{
         margin-left: 3em;
     }
+    .remember_me{
+        margin-left: 5%;
+    }
+    .remember_me p{
+        margin-left: 15%; 
+    }
 }
