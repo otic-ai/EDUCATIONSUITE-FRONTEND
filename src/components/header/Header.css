@@ -121,4 +121,7 @@ font-size: 20px;
       padding-left: 0.5rem;
      padding-right: 0.5rem;
   }
+  .landingpage_header{
+    margin-left: -5em;
+  }
 }
