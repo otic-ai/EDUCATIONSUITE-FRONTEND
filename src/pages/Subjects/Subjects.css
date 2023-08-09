@@ -32,3 +32,49 @@ th{
 .payments{
     padding: 0 5%;
 }
+
+th input,td input{
+    width: 1em;
+}
+
+.payments .searchbutton{
+    display: flex;
+    gap: 1rem;
+}
+
+.payments .searchbutton .button1{
+ width: 90%;
+ height: 2em;
+ background: white;
+ border-color: 0.1px solid #dddddd;
+ border-radius: 5px;
+}
+
+.payments .searchbutton .button2{
+    border-radius: 5px;
+    width: 10%;
+    height: 2em ;
+    background: #040458;
+    color: white;
+}
+
+.payments .subjects .subject1{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.payments .subjects .subject1 span{
+    color: gray;
+}
+
+.payments .download{
+display: flex;
+justify-content: flex-end;
+gap: 1rem;
+}
+.payments .download button{
+    background: blue;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
