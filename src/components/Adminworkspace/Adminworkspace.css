@@ -1,0 +1,44 @@
+/* Contacts.css */
+.contact-form {
+    margin: 40px 0 0 0;
+    /* Add your form styles here */
+  }
+  
+  .data-grid-container {
+    border: none;
+    /* Add your DataGrid container styles here */
+  }
+  
+  .name-column--cell {
+    color: #00FF00;
+  }
+  
+  .MuiDataGrid-columnHeaders {
+    background-color: #040458;
+    border-bottom: none;
+    color: white;
+  }
+  
+  .MuiDataGrid-virtualScroller {
+    background-color: white;
+  }
+  
+  .MuiDataGrid-footerContainer {
+    border-top: none;
+    background-color: white;
+   
+    
+  }
+  
+  .MuiCheckbox-root {
+    color: #00FF00 !important;
+  }
+  
+  .MuiDataGrid-toolbarContainer .MuiButton-text {
+    color: #040458 !important;
+  }
+  .contact-form button{
+    background: #040458;
+  }
+  /* Add more styles as needed */
+  

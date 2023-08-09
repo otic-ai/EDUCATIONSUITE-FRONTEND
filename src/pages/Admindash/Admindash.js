@@ -13,6 +13,8 @@ import {
 import Adminhome from '../../components/Adminhome/Adminhome';
 import Adminteacher from '../../components/Adminteacher/Adminteacher';
 import Adminstudent from '../../components/Adminstudent/Adminstudent'; // Import the other content components here
+import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
+import Workspaces from '../Workspaces/Workspaces';
 // Import other content components as needed
 
 function Admindash() {
@@ -35,14 +37,14 @@ function Admindash() {
         <p onClick={() => handleContentClick('students')}>
           Students <FontAwesomeIcon className='menu' icon={faUserFriends} />
         </p>
+        <p onClick={() => handleContentClick('workspaces')}>
+          Workspaces <FontAwesomeIcon className='menu' icon={faMoneyBill} />
+        </p>
         <p onClick={() => handleContentClick('awards')}>
           Awards <FontAwesomeIcon className='menu' icon={faAward} />
         </p>
         <p onClick={() => handleContentClick('departments')}>
           Department <FontAwesomeIcon className='menu' icon={faHotel} />
-        </p>
-        <p onClick={() => handleContentClick('revenue')}>
-          Revenue <FontAwesomeIcon className='menu' icon={faMoneyBill} />
         </p>
       </div>
 
@@ -50,6 +52,8 @@ function Admindash() {
       {selectedContent === 'home' && <Adminhome />}
       {selectedContent === 'students' && <Adminstudent />}
       {selectedContent === 'teachers' && <Adminteacher />}
+      {selectedContent === 'workspace' && <Adminworkspace />}
+      {selectedContent === 'workspaces' && <Workspaces/>}
       {/* Add more content components based on the selectedContent */}
       {/* For example: */}
       {/* {selectedContent === 'awards' && <AdminAwards />} */}
