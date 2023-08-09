@@ -103,16 +103,17 @@ const Signup = () => {
               required
               />
             </div>
+             
             <div>
-              <label>Address<span className="required">*</span></label>
+              <label>Postal Code</label>
               <input type="text"
-              id="address"
-              name="address"
-              value={formData.address}
+              id="postalcode"
+              name="postalcode"
+              value={formData.postalcode}
               onChange={handleChange}
-              required
               />
             </div>
+           
           </div>
 
           <div className="formcontrol">
@@ -135,16 +136,19 @@ const Signup = () => {
                onChange={handleChange}
               />
             </div>
-          
+         
             <div>
-              <label>Postal Code</label>
+              <label>Address<span className="required">*</span></label>
               <input type="text"
-              id="postalcode"
-              name="postalcode"
-              value={formData.postalcode}
+              id="address"
+              name="address"
+              value={formData.address}
               onChange={handleChange}
+              required
               />
             </div>
+
+
           </div>
           <div className="formcontrol">
             <div>
