@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import google from "../../assets/google.png";
 import twitter from "../../assets/twitter.png";
@@ -10,8 +11,25 @@ import pseudo from "../../assets/pseudo.png";
 import pseudodots from "../../assets/pseudodots.png";
 import freerectangle from "../../assets/freerectangle.png";
 import { Link } from "react-router-dom";
+import AuthContext from "../../utils/AuthContext";
 
 const Login = () => {
+  let {loginUser, proxy} = useContext(AuthContext);
+  const history = useNavigate();
+const [formData, setFormData] = useState({
+  username: '',
+  password: '',
+});
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    [name]: value,
+  }));
+};
+
+
   return (
     <div className="login">
       <div className="login_left">
@@ -40,13 +58,25 @@ const Login = () => {
           </span>
         </div>
         <span><p>Sign in</p></span>
-        <form>
+        <form  onSubmit={loginUser} >
           <div className="form-controls">
-            <input type="text" id="name" name="name" required />
+            <input  type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+            />
             <span>Username</span>
           </div>
           <div className="form-controls">
-            <input type="text" id="name" name="name" required />
+            <input 
+             type="password"
+             id="password"
+             name="password"
+             value={formData.password}
+             onChange={handleChange}
+             required
+            />
             <span>Password</span>
           </div>
           <div className="remember_me">

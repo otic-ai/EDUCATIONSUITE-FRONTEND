@@ -8,15 +8,17 @@ export default AuthContext;
 
 
 export const AuthProvider = ({children}) => {
+   //const proxy = 'http://127.0.0.1:8000'
+   const proxy = 'https://somesai-backend.azurewebsites.net'
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
-    
+    let [jsonData, setJsonData] = useState([])
     const history = useHistory()
 
     let loginUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch('/api/token/', {
+        let response = await fetch(`${proxy}/api/token/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -24,31 +26,36 @@ export const AuthProvider = ({children}) => {
             body:JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
         })
         let data = await response.json()
-
+         setJsonData(data)
         if(response.status === 200){
             setAuthTokens(data)
             
             setUser(jwt_decode(data.access))
-        
+             localStorage.setItem('sign', true)
             localStorage.setItem('authTokens', JSON.stringify(data))
             history('/')
         }else{
-            alert('Something went wrong!')
+            alert('Invalid User Credentials!')
         }
     }
 
 
     let logoutUser = () => {
+        const signs = localStorage.getItem('sign')
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
-        history('/login')
+       
+       // if ( signs === 'true'){
+           history('/landing')   
+       
+        
     }
 
 
     let updateToken = async ()=> {
 
-        let response = await fetch('/api/token/refresh/', {
+        let response = await fetch(`${proxy}/api/token/refresh/`, {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -58,10 +65,18 @@ export const AuthProvider = ({children}) => {
 
         let data = await response.json()
         
+        setJsonData(data)
         if (response.status === 200){
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
+            if (Object.keys(jsonData).includes('detail')) {
+                logoutUser()
+            } else {
+                setAuthTokens(data)
+                setUser(jwt_decode(data.access))
+                localStorage.setItem('authTokens', JSON.stringify(data))
+          
+            }
+                
+          
         }else{
             logoutUser()
         }
@@ -76,17 +91,18 @@ export const AuthProvider = ({children}) => {
         authTokens:authTokens,
         loginUser:loginUser,
         logoutUser:logoutUser,
+        proxy:proxy
         
     }
 
 
     useEffect(()=> {
-
+        
         if(loading){
             updateToken()
         }
 
-        let fourMinutes = 1000 * 60 * 4
+        let fourMinutes = 1000 * 60 * 20
 
         let interval =  setInterval(()=> {
             if(authTokens){
@@ -96,7 +112,7 @@ export const AuthProvider = ({children}) => {
         return ()=> clearInterval(interval)
 
     }, [authTokens, loading])
-
+// {loading ? null : children}
     return(
         <AuthContext.Provider value={contextData} >
             {loading ? null : children}
