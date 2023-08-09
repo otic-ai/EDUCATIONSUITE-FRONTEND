@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem('authTokens', JSON.stringify(data))
             history('/admin')
         }else{
-            alert('Something went wrong!')
+            alert('Invalid User Credentials!')
         }
     }
 
