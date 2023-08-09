@@ -162,4 +162,12 @@ form>div>button{
     .login_left{
         display: none;
     }
+    .form-controls input{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .form-controls span{
+        width: 80%;
+        margin-left: 10%; 
+    }
 }
