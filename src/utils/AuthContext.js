@@ -8,8 +8,8 @@ export default AuthContext;
 
 
 export const AuthProvider = ({children}) => {
-   // const proxy = 'http://127.0.0.1:8000'
-    const proxy = 'https://somesai-backend.azurewebsites.net'
+   const proxy = 'http://127.0.0.1:8000'
+   // const proxy = 'https://somesai-backend.azurewebsites.net'
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
@@ -33,7 +33,7 @@ export const AuthProvider = ({children}) => {
             setUser(jwt_decode(data.access))
              localStorage.setItem('sign', true)
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history('/admin')
+            history('/')
         }else{
             alert('Invalid User Credentials!')
         }
@@ -47,7 +47,7 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('authTokens')
        
        // if ( signs === 'true'){
-           history('/Login')   
+           history('/landing')   
        
         
     }
