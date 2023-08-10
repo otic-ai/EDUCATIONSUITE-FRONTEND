@@ -10,7 +10,6 @@ import Admindash from './pages/Admindash/Admindash';
 import { AuthProvider } from './utils/AuthContext';
 import "./App.css";
 import Admindashboard from "./pages/admindashboard/Admindashboard";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 
 function App() {

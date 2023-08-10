@@ -1,7 +1,7 @@
 import React from "react";
 import "./Teachersdash.css";
 import Dashboardheader from "../../components/dashboardheader/Dashboardheader";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar"
 import Teachercontent from "../../components/Teacher/Teachercontent";
 import Footer from "../../components/footer/Footer";
 const Teachersdash = () => {
