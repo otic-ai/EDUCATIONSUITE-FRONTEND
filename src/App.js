@@ -8,6 +8,10 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Admindash from './pages/Admindash/Admindash';
 import { AuthProvider } from './utils/AuthContext';
+import CreateWorkspaces from './components/CreateWorkspaces/CreateWorkspaces';
+import FormFillPage from './pages/Forms/ViewForm';
+import DynamicColumnsDataGrid from './pages/Forms/ViewFormEntryData';
+
 
 
 function App() {
@@ -18,8 +22,11 @@ function App() {
         <Route path="/landing" element={<Landingpage />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Pricing" element={<Pricing />} />
-        <Route path="/Signup" element={<Signup />} />       
+        <Route path="/Signup" element={<Signup />} /> 
+        <Route exact path="/formdetails/:pk" element={<DynamicColumnsDataGrid />} />      
         <Route path='/' element={<Admindash/>}/>
+        <Route exact path="/formview/:name/:pk" element={<FormFillPage />}/>
+        <Route path='/workspace/create' element={<CreateWorkspaces />}/>
       </Routes>
       </AuthProvider>
       
