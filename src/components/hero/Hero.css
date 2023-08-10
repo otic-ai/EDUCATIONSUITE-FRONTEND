@@ -96,10 +96,6 @@
         flex-wrap:wrap;
        
     }
-    .hero_left_image{
-        margin-top: 3em;
-        margin-left: -6.7em;
-    }
     .hero_left>div:nth-of-type(1){
         font-size:30px;
       }
