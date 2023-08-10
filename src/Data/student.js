@@ -1,0 +1,20 @@
+export const student=[
+{
+    id:3,
+    reg_no:241234,
+    class:"s.4",
+    name:'kato',
+    teacher_name:"shivan",
+    parent_name:"humuze",
+    BOD:"54/5/5"
+},
+{
+    id:4,
+    reg_no:541234,
+    class:"s.6",
+    name:'kast',
+    teacher_name:"shivretgn",
+    parent_name:"humuzsfge",
+    BOD:"54/45/5"
+}
+]

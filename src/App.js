@@ -17,6 +17,7 @@ function App() {
           <Route path="/Pricing" element={<Pricing />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Teacher" element={<Teachersdash />} />
+          <Route path="*" element={<div>Page Not found</div>} />
         </Routes>
       </BrowserRouter>
     </div>

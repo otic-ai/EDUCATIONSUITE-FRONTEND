@@ -20,10 +20,6 @@ const Teachercontent = () => {
   };
   return (
     <div className="content">
-      <header>
-        <h3>Teacher</h3>
-        <h3>Home/Teacher</h3>
-      </header>
       <Contentanalysis />
       <div className="content_subsection">
         <div className="twosection">

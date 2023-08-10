@@ -3,7 +3,6 @@ import "./Dashboardheader.css";
 import logo from "../../assets/logo.png";
 import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import CenterFocusWeakIcon from "@mui/icons-material/CenterFocusWeak";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import SearchIcon from "@mui/icons-material/Search";
 import Avatar from '@mui/material/Avatar';
@@ -18,7 +17,7 @@ const Dashboardheader = () => {
         <div className="dashboardform">
           <SearchIcon fontSize="inherit" style={{ fontSize: '2rem' }} color="primary" />
           <form>
-            <input type="text" placeholder="search here" />
+            <input className="header_input" type="text" placeholder="search here" />
           </form>
         </div>
       </div>

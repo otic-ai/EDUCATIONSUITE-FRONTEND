@@ -10,9 +10,11 @@ const Sidebar = () => {
         {dashboarddata.map((item) => {
           return (
             <div className="dashboarddata">
-              <span>{item.icon} </span>
-              <h4>{item.name}</h4>
-              <span>{item.icon1}</span>
+              <li className="listtype">
+                <span>{item.icon} </span>
+                <h4>{item.name}</h4>
+                <span>{item.icon1}</span>
+              </li>
             </div>
           );
         })}
@@ -23,9 +25,11 @@ const Sidebar = () => {
         {management.map((item) => {
           return (
             <div className="dashboarddata">
-              <span>{item.icon} </span>
-              <h4>{item.name}</h4>
-              <span>{item.icon1}</span>
+              <li className="listtype">
+                <span>{item.icon} </span>
+                <h4>{item.name}</h4>
+                <span>{item.icon1}</span>
+              </li>
             </div>
           );
         })}
@@ -35,9 +39,11 @@ const Sidebar = () => {
         {pages.map((item) => {
           return (
             <div className="dashboarddata">
-              <span>{item.icon} </span>
-              <h4>{item.name}</h4>
-              <span>{item.icon1}</span>
+              <li className="listtype">
+                <span>{item.icon} </span>
+                <h4>{item.name}</h4>
+                <span>{item.icon1}</span>
+              </li>
             </div>
           );
         })}

@@ -2,7 +2,12 @@
     display: flex;
     height: auto;
 }
-aside{
-    flex:0.2;
-    background-color: yellow;
+/* main */
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid green;
+    width:100%;
 }

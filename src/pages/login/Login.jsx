@@ -39,7 +39,7 @@ const Login = () => {
           </span>
         </div>
         <span>Sign in</span>
-        <form>
+        <form className="loginforms">
           <div className="form-controls">
             <input type="text" id="name" name="name" required />
             <span>Username</span>
