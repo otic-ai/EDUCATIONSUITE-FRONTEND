@@ -8,7 +8,10 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Admindash from './pages/Admindash/Admindash';
 import { AuthProvider } from './utils/AuthContext';
-
+import "./App.css";
+import Admindashboard from "./pages/admindashboard/Admindashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 
 function App() {
   return (
@@ -20,9 +23,9 @@ function App() {
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Signup" element={<Signup />} />       
         <Route path='/' element={<Admindash/>}/>
+        <Route path="/Teacher" element={<Teachersdash />} />
       </Routes>
       </AuthProvider>
-      
     </div>
   );
 }
