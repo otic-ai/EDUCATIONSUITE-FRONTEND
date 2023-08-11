@@ -8,7 +8,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Admindash from './pages/Admindash/Admindash';
 import { AuthProvider } from './utils/AuthContext';
-
+import Teachercontent from './components/Teacher/Teachercontent';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Signup" element={<Signup />} />       
         <Route path='/' element={<Admindash/>}/>
+        <Route path="/teachers" element={<Teachercontent />} />
       </Routes>
       </AuthProvider>
       
