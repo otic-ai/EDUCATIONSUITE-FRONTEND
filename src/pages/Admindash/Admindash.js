@@ -21,6 +21,7 @@ import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import { AuthContext } from 'react-admin';
 
+import Subjects from '../Subjects/Subjects';
 // Import other content components as needed
 
 function Admindash() {
@@ -72,6 +73,20 @@ function Admindash() {
       <p onClick={() => handleContentClick('departments')}>
         Department <FontAwesomeIcon className='menu' icon={faHotel} />
       </p>
+      
+
+      {/* Conditionally render the content based on the selected content */}
+      {selectedContent === 'home' && <Adminhome />}
+      {selectedContent === 'students' && <Adminstudent />}
+      {selectedContent === 'teachers' && <Adminteacher />}
+      {selectedContent === 'workspace' && <Adminworkspace />}
+      {selectedContent === 'workspaces' && <Workspaces/>}
+      {selectedContent === 'subjects' && <Subjects/>}
+      {/* Add more content components based on the selectedContent */}
+      {/* For example: */}
+      {/* {selectedContent === 'awards' && <AdminAwards />} */}
+      {/* {selectedContent === 'departments' && <AdminDepartments />} */}
+      {/* {selectedContent === 'revenue' && <AdminRevenue />} */}
     </div>
 
     {/* Conditionally render the content based on the selected content */}
