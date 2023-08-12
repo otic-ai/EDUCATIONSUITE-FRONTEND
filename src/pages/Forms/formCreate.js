@@ -14,12 +14,18 @@ const CreateForm = () => {
     const history = useNavigate();
     const handleInputChange = (event, newInputValue) => {
         setInputValue(newInputValue);
+        const {name, value} = event.target;
+    setFormData((prevFormData)=>({
+      ...prevFormData,
+      [name]:value,
+      allowed:selectedChoice
+    }));
       };
     
   const [formData,setFormData] = useState({
     name:'',
     design:'',
-    allowed:''
+    allowed:selectedChoice
   })
   let {authTokens, proxy} = useContext(AuthContext);
   const handleChange =(event)=>{
@@ -27,13 +33,13 @@ const CreateForm = () => {
     setFormData((prevFormData)=>({
       ...prevFormData,
       [name]:value,
-      allowed:selectedChoice.id
+      allowed:selectedChoice
     }));
   }
   let Create = async (e )=> {
     e.preventDefault();
     if (selectedChoice.length > 0) {
-      alert(JSON.stringify(formData))
+      
     const jsonData = JSON.stringify(formData)
     try {
       const response = await fetch(`${proxy}/default/createform/`,
@@ -70,7 +76,7 @@ const CreateForm = () => {
       .then((response) => response.json())
       .then((data) => {
         // Assuming the API returns an array of option objects with a 'label' property
-        setOptions([{ id: null, first_name: 'All', last_name : '' }, ...data]);
+        setOptions([{ id: '', first_name: 'All', last_name : '' }, ...data]);
       })
       .catch((error) => {
         console.error('Error fetching options:', error);
@@ -81,7 +87,20 @@ const CreateForm = () => {
     <div> <Link to='/' ><Header /></Link>   
     <div className="centered-form" >
     <form  onSubmit={Create} >
-     
+    <Autocomplete
+       multiple
+       freeSolo
+       options={options.map((option) => `${option.id} ${option.first_name} ${option.last_name}`)}
+        getOptionLabel={(option) => option}
+        value={selectedChoice}
+        onChange={async (event, newValue) => {
+        await  setSelectedChoice(newValue);
+          
+        }}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+        renderInput={(params) => <TextField {...params} label="Select Allowed Users" />}
+      />
       <div>
         <label htmlFor="username">Form Name</label>
         <input
@@ -105,19 +124,7 @@ const CreateForm = () => {
         />
       </div>
   
-      <Autocomplete
-       multiple
-       freeSolo
-       options={options.map((option) => `${option.first_name} ${option.last_name}`)}
-        getOptionLabel={(option) => option}
-        value={selectedChoice}
-        onChange={(event, newValue) => {
-          setSelectedChoice(newValue);
-        }}
-        inputValue={inputValue}
-        onInputChange={handleInputChange}
-        renderInput={(params) => <TextField {...params} label="Select a choice" />}
-      />
+     
       <Button type="submit" variant="contained" color="primary" disabled={!selectedChoice}>
         Create
       </Button>

@@ -44,12 +44,25 @@ const Contacts = () => {
     setSelectedContent(content);
     
   };
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
     if (selectedChoice && selectedChoice.id !== null) {
+    await  fetch(`${proxy}/adduser/${selectedChoice}`,{
+        method: 'POST',
+        headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${authTokens.access}`,
+      }})
+        .then((response) => response.json())
+        .then((data) => {
+          // Assuming the API returns an array of option objects with a 'label' property
+          alert(data.message)  
+        })
+        .catch((error) => {
+          console.error('Error fetching options:', error);
+        });
       // Submit the form with the selected choice
-      alert('Selected choice ID:', selectedChoice);
-      alert('Selected choice:', selectedChoice.firstName, selectedChoice.lastName);
+    
     }
   };
 
@@ -94,7 +107,7 @@ const Contacts = () => {
       .then((response) => response.json())
       .then((data) => {
         // Assuming the API returns an array of option objects with a 'label' property
-        setOptions([{ id: null, first_name: 'All', last_name : '' }, ...data]);
+        setOptions([ ...data]);
       })
       .catch((error) => {
         console.error('Error fetching options:', error);
@@ -112,11 +125,12 @@ const Contacts = () => {
         <Autocomplete
        multiple
        freeSolo
-       options={options.map((option) => `${option.first_name} ${option.last_name}`)}
+       options={options.map((option) => `${option.id} ${option.first_name} ${option.last_name}`)}
         getOptionLabel={(option) => option}
         value={selectedChoice}
         onChange={(event, newValue) => {
           setSelectedChoice(newValue);
+        
         }}
         inputValue={inputValue}
         onInputChange={handleInputChange}
