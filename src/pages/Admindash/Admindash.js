@@ -11,7 +11,6 @@ import {
   faMoneyBill,
 } from '@fortawesome/free-solid-svg-icons';
 import Adminhome from '../../components/Adminhome/Adminhome';
-import Adminteacher from '../../components/Adminteacher/Adminteacher';
 import Adminstudent from '../../components/Adminstudent/Adminstudent'; // Import the other content components here
 import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
@@ -78,30 +77,17 @@ function Admindash() {
       {/* Conditionally render the content based on the selected content */}
       {selectedContent === 'home' && <Adminhome />}
       {selectedContent === 'students' && <Adminstudent />}
-      {selectedContent === 'teachers' && <Adminteacher />}
       {selectedContent === 'workspace' && <Adminworkspace />}
       {selectedContent === 'workspaces' && <Workspaces/>}
       {selectedContent === 'subjects' && <Subjects/>}
       {selectedContent === 'timetable' && <Timetable/>}
+      {selectedContent === 'teachers' && <Forms start={true} />}
       {/* Add more content components based on the selectedContent */}
       {/* For example: */}
       {/* {selectedContent === 'awards' && <AdminAwards />} */}
       {/* {selectedContent === 'departments' && <AdminDepartments />} */}
       {/* {selectedContent === 'revenue' && <AdminRevenue />} */}
-    
-
-    {/* Conditionally render the content based on the selected content */}
-    {selectedContent === 'home' && <Adminhome />}
-    {selectedContent === 'students' && <Adminstudent />}
-    {selectedContent === 'teachers' && <Forms start={true} />}
-    {selectedContent === 'workspace' && <Adminworkspace />}
-    {selectedContent === 'workspaces' && <Workspaces/>}
-    
-    {/* Add more content compone nts based on the selectedContent */}
-    {/* For example: */}
-    {/* {selectedContent === 'awards' && <AdminAwards />} */}
-    {/* {selectedContent === 'departments' && <AdminDepartments />} */}
-    {/* {selectedContent === 'revenue' && <AdminRevenue />} */}
+  
     </div>}
   </div>
   </div>
