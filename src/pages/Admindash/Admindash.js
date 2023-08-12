@@ -17,11 +17,10 @@ import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
 import LoadingSpinner from '../../components/LoadSpinner/LoadSpinner';
 import Forms from '../Forms/forms';
-import { Admin, Resource } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
-import { AuthContext } from 'react-admin';
+
 
 import Subjects from '../Subjects/Subjects';
+import AuthContext from '../../utils/AuthContext';
 // Import other content components as needed
 
 function Admindash() {
@@ -74,7 +73,7 @@ function Admindash() {
         Department <FontAwesomeIcon className='menu' icon={faHotel} />
       </p>
       
-
+       </div>
       {/* Conditionally render the content based on the selected content */}
       {selectedContent === 'home' && <Adminhome />}
       {selectedContent === 'students' && <Adminstudent />}
@@ -87,7 +86,7 @@ function Admindash() {
       {/* {selectedContent === 'awards' && <AdminAwards />} */}
       {/* {selectedContent === 'departments' && <AdminDepartments />} */}
       {/* {selectedContent === 'revenue' && <AdminRevenue />} */}
-    </div>
+    
 
     {/* Conditionally render the content based on the selected content */}
     {selectedContent === 'home' && <Adminhome />}

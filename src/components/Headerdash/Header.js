@@ -7,6 +7,7 @@ import logo from '../../components/images/logo.png'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AuthContext from '../../utils/AuthContext';
+import Dropdown from '../DropDown/DropDown';
 
 const Headerdash = ({click}) => {
   const history = useNavigate();
@@ -58,70 +59,7 @@ const Headerdash = ({click}) => {
 
 
   useEffect(  ()=>{
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${proxy}/institution/list/`,
-        {
-          method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authTokens.access}`,
-          },
-        }); // Replace with your API URL
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        localStorage.setItem('loading', true)
-        const jsonData = await response.json();
-       await  setOptions(jsonData)
-       setStatusCode(response.status)
-       
-        localStorage.setItem('loading', false)
-       
-       
-        // Extracting 'name' property from each object
-        
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-      
-    };
-
-    const fetchdefault = async () => {
-      try {
-        const response = await fetch(`${proxy}/institution/default/`,
-        {
-          method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authTokens.access}`,
-          },
-        }); // Replace with your API URL
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        localStorage.setItem('loading', true)
-        const jsonData = await response.json();
-       await setDefaultSpace(jsonData)
-       setStatusCode(response.status)
-       localStorage.setItem('id', jsonData[0].id)
-     localStorage.setItem('loading', false)
     
-     
-    
-        
-        // Extracting 'name' property from each object
-        
-      } catch (error) {
-        localStorage.setItem('id', null)
-        console.error('Create Workspace');
-        localStorage.setItem('loading', true)
-      
-      }
-      
-    };
-    fetchdefault();
-      fetchData();
      
   },[options.defaultSpace])
 
@@ -132,18 +70,7 @@ const Headerdash = ({click}) => {
         
         <form>
           <input type='text' placeholder='Search here' name='name'/>
-          <div className='drop'> <select value={selectedOption} onChange={handleDropdownChange}>
-          {defaultSpace.map((option,index) => (
-          <option key={index} value={option.id}>
-            {option.institution}
-          </option>
-        ))}
-        {options.map((option,index) => (
-          <option key={index} value={option.id}>
-            {option.institution}
-          </option>
-        ))}
-      </select>
+          <div className='drop'> <Dropdown />
       <img src={imageUrl}  alt=''/>  </div>
         </form>
         

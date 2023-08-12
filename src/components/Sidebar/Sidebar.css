@@ -1,6 +1,9 @@
 body{
     background: #dadada;
   }
+  .work-space {
+    display: none;
+  }
   .sidebar{
       height: 100%;
       width: 250px;
@@ -15,6 +18,9 @@ body{
     }
     .collapse{
       transform: translateX(0%);
+    }
+    .workspace {
+      color: white;
     }
   
     .sidebar ul li{
@@ -50,4 +56,10 @@ body{
     .sidebar .sticky{
       position: sticky;
       top: 0;
+    }
+
+    @media screen and (max-width:600px){
+      .work-space {
+        display: block;
+      }
     }

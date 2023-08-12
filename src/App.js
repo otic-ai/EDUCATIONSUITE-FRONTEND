@@ -14,7 +14,7 @@ import DynamicColumnsDataGrid from './pages/Forms/ViewFormEntryData';
 
 
 import "./App.css";
-import Admindashboard from "./pages/admindashboard/Admindashboard";
+
 import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 
 function App() {
