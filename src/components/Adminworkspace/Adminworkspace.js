@@ -4,161 +4,148 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./Adminworkspace.css"; // Import the CSS file
-
-const tokens = (mode) => {
-  // Mock function for theme-specific colors
-  return {
-    greenAccent: { 300: "#00FF00" },
-    blueAccent: { 700: "#0000FF" },
-    primary: { 400: "#CCCCCC" },
-    grey: { 100: "#888888" },
-  };
-};
-
-const mockDataContacts = [
-  {
-    id: 1,
-    registrarId: "REG001",
-    name: "John Doe",
-    age: 30,
-    phone: "123-456-7890",
-    email: "john.doe@example.com",
-    address: "123 Main Street",
-    city: "New York",
-    zipCode: "10001",
-  },
-  {
-    id: 2,
-    registrarId: "REG001",
-    name: "John Doe",
-    age: 30,
-    phone: "123-456-7890",
-    email: "john.doe@example.com",
-    address: "123 Main Street",
-    city: "New York",
-    zipCode: "10001",
-  },
-  // Add more contacts here if needed
-];
+import AuthContext from '../../utils/AuthContext';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const Contacts = () => {
+  const [columns, setColumns] = useState([]);
   const theme = "light"; // Simulate theme value for useTheme hook
-  const colors = tokens(theme);
+  
+  let {proxy,authTokens} = useContext(AuthContext);
+  const [data, setData] = useState([]);
+  const { pk } = useParams();
+  
 
-  const [contacts, setContacts] = useState(mockDataContacts);
-  const [newContact, setNewContact] = useState({
-    registrarId: "",
-    name: "",
-    age: 0,
-    phone: "",
-    email: "",
-    address: "",
-    city: "",
-    zipCode: "",
-  });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setNewContact((prevContact) => ({ ...prevContact, [name]: value }));
+  const [open, setOpen] = useState(false);
+  const [selectedContent, setSelectedContent] = useState('home'); 
+  const [selectedChoice, setSelectedChoice] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState([]);
+    const history = useNavigate();
+    const [formData,setFormData] = useState({
+      name:'',
+      design:'',
+      allowed:''
+    })
+    const handleInputChange = (event, newInputValue) => {
+      const {name, value} = event.target;
+      setFormData((prevFormData)=>({
+        ...prevFormData,
+        [name]:value,
+        allowed:selectedChoice.id
+      }));
+      };
+    
+  const handleclick = () => {
+    setOpen(!open);
   };
 
-  const handleAddContact = () => {
-    const newId = contacts.length + 1;
-    setContacts((prevContacts) => [...prevContacts, { ...newContact, id: newId }]);
-    setNewContact({
-      registrarId: "",
-      name: "",
-      age: 0,
-      phone: "",
-      email: "",
-      address: "",
-      city: "",
-      zipCode: "",
-    });
+  const handleContentClick = (content) => {
+    setSelectedContent(content);
+    
+  };
+  const handleSubmit =async (event) => {
+    event.preventDefault();
+    if (selectedChoice && selectedChoice.id !== null) {
+    await  fetch(`${proxy}/adduser/${selectedChoice}`,{
+        method: 'POST',
+        headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${authTokens.access}`,
+      }})
+        .then((response) => response.json())
+        .then((data) => {
+          // Assuming the API returns an array of option objects with a 'label' property
+          alert(data.message)  
+        })
+        .catch((error) => {
+          console.error('Error fetching options:', error);
+        });
+      // Submit the form with the selected choice
+    
+    }
   };
 
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
-    { field: "name", headerName: "Name", flex: 1 },
-    { field: "age", headerName: "Age", type: "number" },
-    { field: "phone", headerName: "Phone Number", flex: 1 },
-    { field: "email", headerName: "Email", flex: 1 },
-    { field: "address", headerName: "Address", flex: 1 },
-    { field: "city", headerName: "City", flex: 1 },
-    { field: "zipCode", headerName: "Zip Code", flex: 1 },
-  ];
+  useEffect(() => {
+    // Simulating API call
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${proxy}/workspace/users/`,
+        {
+          method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authTokens.access}`,
+          },
+        });
+        const jsonData = await response.json();
+
+        // Set data
+        setData(jsonData);
+        const dataWithIds = jsonData.map((item, index) => ({ ...item, id: index + 1 }));
+        setData(dataWithIds);
+        // Generate columns dynamically based on the keys in the first row
+        if (dataWithIds.length > 0) {
+          const columnFields = Object.keys(jsonData[0]);
+          const generatedColumns = columnFields.map((field) => ({
+            field,
+            headerName: field,
+            width: 150,
+          }));
+          setColumns(generatedColumns);
+        }
+      } catch (error) {
+        console.error('API Error:', error);
+      }
+    };
+    fetch(`${proxy}/user/list/`,{
+      method: 'GET',
+      headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authTokens.access}`,
+    }})
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming the API returns an array of option objects with a 'label' property
+        setOptions([ ...data]);
+      })
+      .catch((error) => {
+        console.error('Error fetching options:', error);
+      });
+
+    fetchData();
+  }, []);
+
+  
 
   return (
     <Box m="20px">
       <Box className="contact-form">
-        <TextField
-          name="id"
-          label="ID"
-          value={newContact.id}
-          onChange={handleInputChange}
-        />
-        <TextField
-          name="registrarId"
-          label="Registrar ID"
-          value={newContact.regid}
-          onChange={handleInputChange}
-        />
-        <TextField
-          name="name"
-          label="Name"
-          value={newContact.name}
-          onChange={handleInputChange}
-        />
-               <TextField
-          name="age"
-          label="Age"
-          value={newContact.age}
-          onChange={handleInputChange}
-        />
-                <TextField
-          name="phone"
-          label="Phone Number"
-          value={newContact.phonenumber}
-          onChange={handleInputChange}
-        />
-        <TextField
-          name="email"
-          label="Email"
-          value={newContact.email}
-          onChange={handleInputChange}
-        />
-                <TextField
-          name="address"
-          label="Address"
-          value={newContact.address}
-          onChange={handleInputChange}
-        />
-                <TextField
-          name="city"
-          label="City"
-          value={newContact.city}
-          onChange={handleInputChange}
-        />
-                <TextField
-          name="zipCode"
-          label="Zip Code"
-          value={newContact.zipcode}
-          onChange={handleInputChange}
-        />
-        {/* Add more input fields for other contact details as needed */}
-        <Button variant="contained" color="primary" onClick={handleAddContact}>
-          Add User
-        </Button>
+        <form onSubmit={handleSubmit}>
+        <Autocomplete
+       multiple
+       freeSolo
+       options={options.map((option) => `${option.id} ${option.first_name} ${option.last_name}`)}
+        getOptionLabel={(option) => option}
+        value={selectedChoice}
+        onChange={(event, newValue) => {
+          setSelectedChoice(newValue);
+        
+        }}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+        renderInput={(params) => <TextField {...params} label="Select a choice" />}
+      />
+      <Button type="submit" variant="contained" color="primary" disabled={!selectedChoice}>
+        Add User
+      </Button>
+        </form>
+     
+       
+     
       </Box>
 
-      <Box className="data-grid-container">
-        <DataGrid
-          rows={contacts}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
-      </Box>
+      <DataGrid rows={data} columns={columns} components={{ Toolbar: GridToolbar }} />
     </Box>
   );
 };

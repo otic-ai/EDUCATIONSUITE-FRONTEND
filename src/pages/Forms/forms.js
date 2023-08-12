@@ -127,6 +127,10 @@ const Forms = (props) => {
         }
       };
 
+      const handleAddContact = () => {
+        history(`/createForm`)
+      }
+
     useEffect(() => {
         
         // Function to make the API call /default/list/
@@ -139,7 +143,12 @@ const Forms = (props) => {
       }, []);
 
   return (
-    <div>  <h1>Available Forms</h1>
+    <div> 
+      <Button variant="contained" color="primary" onClick={handleAddContact}>
+          Create Form
+        </Button>
+       <h1>Available Forms</h1>
+    
     {loading ? <LoadingSpinner /> : <div>
     
        

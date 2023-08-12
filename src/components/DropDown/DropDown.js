@@ -107,10 +107,10 @@ const [imageUrl, setImageUrl] = useState('data:image/png;base64,iVBORw0KGgoAAAAN
     
   };
 
-  const handleDropdownChange = (event) => {
+  const handleDropdownChange = async (event) => {
     const selectedValue = event;
     setSelectedOption(selectedValue);
-    switchWorkspace(selectedValue);
+  await  switchWorkspace(selectedValue);
 
     window.location.reload();
    // alert(`You selected: ${selectedValue}`);

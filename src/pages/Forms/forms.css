@@ -4,3 +4,15 @@
   font-weight: bold;
   font-size: 1.2em;
 }
+
+/* styles.css or your preferred CSS file */
+.centered-form {
+  display: flex;
+  flex-direction: column;
+ 
+  margin: 0 auto;
+  max-width: 600px; /* Adjust this value as needed */
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
