@@ -69,9 +69,9 @@ const Headerdash = ({click}) => {
       <button  onClick={click}>< FontAwesomeIcon className="menu" icon={faBars}/></button>
         
         <form>
-          <input type='text' placeholder='Search here' name='name'/>
+          
           <div className='drop'> <Dropdown />
-      <img src={imageUrl}  alt=''/>  </div>
+ </div>
         </form>
         
     </div>

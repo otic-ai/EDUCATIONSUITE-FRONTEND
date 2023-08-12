@@ -76,7 +76,7 @@ const FormFillPage = () => {
   const surveyJson = form
   const survey = new Model(surveyJson);
   const alertResults = useCallback((sender)  =>   {
-   
+   alert(JSON.stringify(sender.data))
     handleSubmit(sender.data)
    
   }, []);

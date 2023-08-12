@@ -16,6 +16,7 @@ import DynamicColumnsDataGrid from './pages/Forms/ViewFormEntryData';
 import "./App.css";
 
 import Teachersdash from "./pages/teachersdashboard/Teachersdash";
+import CreateForm from './pages/Forms/formCreate';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} /> 
         <Route exact path="/formdetails/:pk" element={<DynamicColumnsDataGrid />} />      
         <Route path='/' element={<Admindash/>}/>
+        <Route exact path="/createForm" element={<CreateForm />} />
         <Route exact path="/formview/:name/:pk" element={<FormFillPage />}/>
         <Route path='/workspace/create' element={<CreateWorkspaces />}/>
         <Route path="/Teacher" element={<Teachersdash />} />
