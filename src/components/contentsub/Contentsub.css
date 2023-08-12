@@ -1,0 +1,12 @@
+.filebuttons{
+    display: flex;
+    gap:1rem;
+}
+.filebuttons>input{
+    border: none;
+    color: white;
+    font-size: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: blue;
+}

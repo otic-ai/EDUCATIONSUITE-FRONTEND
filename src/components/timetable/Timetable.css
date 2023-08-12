@@ -1,0 +1,9 @@
+.timetable{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    background-color: #ffffff;
+    margin: 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+}

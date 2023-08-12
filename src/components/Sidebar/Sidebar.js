@@ -21,7 +21,7 @@ export default function Sidebar({open,onContentClick}) {
       <ul className='content'>
         <li>< FontAwesomeIcon className="menu" icon={faFileAlt}/>Accounts</li>
         <li>< FontAwesomeIcon className="menu" icon={faClipboardList}/> Exam lis</li>
-        <li>< FontAwesomeIcon className="menu" icon={faTable}/>Time Table</li>
+        <li onClick={() => onContentClick('timetable')}>< FontAwesomeIcon className="menu" icon={faTable}/>Time Table</li>
         <li>< FontAwesomeIcon className="menu" icon={faCog}/> Settings</li>
       </ul>
       <button>Pages</button>
