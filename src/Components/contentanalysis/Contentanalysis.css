@@ -1,0 +1,16 @@
+.content_analysis{
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    padding:1rem;
+}
+.content_analysis>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background-color:#ffffff;
+    padding:7px;
+    border-radius: 6px;
+    box-shadow: 0 0 2px rgb(146, 142, 142);
+}

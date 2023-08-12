@@ -1,32 +1,78 @@
 .header{
     width: 100%;
-    height: 30px;
+  
     background: white;
     padding: 10px;
     height: 5em;
     margin-left: -6px;
     margin-top: -7px;
+   
   }
-
+  .header img {
+    position: relative;
+   
+  }
   .header button{
-    position: absolute;
-    margin-top: 2.7em;
+    position: relative;
+    top: 0.9em;
     height:2em;
     width: 2em;
-    margin-left: 2em;
+    margin-left: -8em;
     background: blue;
     border-radius: 6px;
     border: none;
     color: white;
+    
   }
 
 
   .header form input{
-    height: 2em;
+    position: relative;
+    height: 3em;
     width: 20%;
-    margin-left: 20em;
-    margin-top: -4em;
+    margin-left: 0em;
+    margin-top: 0.7em;
     background: #F7F7FA;
     border: 1px solid gray;
     border-radius: 7px;
+  }
+  .header .drop {
+    position: absolute;
+   
+    
+   right: 10%;
+;
+    
+   
+    border-radius: 7px;
+  }
+  .header .drop img {
+    border-radius: 50%; 
+    top: 1.9em;
+    width: em;
+    height: 5em;
+  }
+
+  .header select {
+    height: 3em;
+    
+    background: #F7F7FA;
+    border: 1px solid white;
+    border-radius: 7px;
+    font-size: large;
+  }
+
+  @media screen and (max-width:600px){
+
+    .drop {
+      display: none;
+    }
+    .header form input{
+      width: 60%;
+    }
+    .header img {
+      position: relative;
+      width: 30%;
+    }
+
   }

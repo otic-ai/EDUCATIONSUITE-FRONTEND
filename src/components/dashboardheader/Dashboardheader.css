@@ -1,0 +1,49 @@
+.dashboardheader{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 1rem;
+    background-color:#F5F5F5;
+  }
+  .header_leftside{
+      display: flex;
+      gap:2rem;
+      align-items: center;
+  }
+  
+  .dashboardform{
+      display: flex;
+      align-items: center;
+      background-color: #D7D9DE;
+      border-radius: 8px;
+      padding-left: 6px;
+  
+  }
+  .header_input{
+     width:300px;
+     border:none;
+     box-shadow:none;
+     background-color:inherit;
+     font-size: 16px;
+  }
+  
+  /* Remove border when input is focused */
+  input:focus {
+      outline: none; /* Remove outline when focused (optional) */
+      border: none; /* Remove border */
+    }
+  
+  /* rightside */
+  
+  .header_rightside{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap:2rem;
+  }
+  .profile{
+      display: flex;
+      align-items: center;
+      justify-content:space-between;
+      gap:0.5rem
+  }
