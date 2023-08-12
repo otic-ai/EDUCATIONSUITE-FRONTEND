@@ -8,8 +8,8 @@ export default AuthContext;
 
 
 export const AuthProvider = ({children}) => {
- const proxy = 'http://127.0.0.1:8000'
-   //const proxy = 'https://somesai-backend.azurewebsites.net'
+ //const proxy = 'http://127.0.0.1:8000'
+   const proxy = 'https://somesai-backend.azurewebsites.net'
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
     let [loading, setLoading] = useState(true)
