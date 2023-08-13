@@ -31,15 +31,39 @@ const Forms = (props) => {
         setSelectedRow(null);
       };
     
-      const handleOptionClick = (option) => {
+      const handleOptionClick = async (option) => {
         // Perform action based on selected option and row data
        
         if (option==='view'){
             console.log('Selected option:', option);
             console.log('Selected row:', selectedRow.id);
             history(`/formdetails/${selectedRow.tableName}`)
-        } else if (option==='users'){
+        } else if (option==='xxxusers'){
           history(`/form-user-permissions/${selectedRow.tableName}`)
+        } else if (option==='Delete'){
+          const result = window.confirm('Do you want to want to delete this form?');
+          if (result) {
+          try {
+            const response = await fetch(`${proxy}/default/deleteform/${selectedRow.id}/`,
+            {
+              method: 'GET', // Replace with the appropriate HTTP method (e.g., POST, PUT, DELETE)
+              headers: {
+                'Content-Type': 'application/json',
+              'Authorization': `Bearer ${authTokens.access}`,
+              },
+            }); // Replace with your API URL
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            setLoading(true)
+            const jsonData = await response.json();
+            window.location.reload();
+            // Extracting 'name' property from each object
+            alert(jsonData.message)
+            setLoading(false)
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }}
         }
 
         handleMenuClose();
