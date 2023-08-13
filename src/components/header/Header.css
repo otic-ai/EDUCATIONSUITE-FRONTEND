@@ -94,31 +94,7 @@
 }
 
 @media screen and (max-width:768px){
-    .liststyles>ul{
-        color:white;
-        position: fixed;
-        right: 0.5rem;
-        z-index: 99;
-        padding: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: #0a2ee4;
-       
-    }
-   
-    .header_left{
-    padding-top: 1rem;
-    background-color: #0a2ee4;
-        position: fixed;
-        right: 0.5rem;
-        z-index: 99;
-        display: flex;
-        flex-direction: column;
-        gap:0.5rem;
-        justify-content:space-between;
-        align-items: center;
-        padding-left: 0.5rem;
-       padding-right: 0.5rem;
+    .liststyles{
+      display: none;
     }
 }
