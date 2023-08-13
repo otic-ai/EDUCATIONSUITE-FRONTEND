@@ -3,11 +3,16 @@
     flex-direction: column;
     flex: 0.8;
 }
-
+.content>header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:2rem;
+    padding:0.5rem;
+}
 .content_subsection{
     display: flex;
-    gap:3rem;
-    justify-content: center;
+    justify-content: space-between;
     padding: 1rem;
 } 
 .lessons{
@@ -39,6 +44,7 @@
     align-items: center;
     
 }
+
 
 
 .piecahart{
