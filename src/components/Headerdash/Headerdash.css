@@ -13,11 +13,11 @@
    
   }
   .header button{
-    position: relative;
-    top: 0.9em;
+    position: absolute;
+    top: 3.7em;
     height:2em;
     width: 2em;
-    margin-left: -8em;
+    margin-left: 15em;
     background: blue;
     border-radius: 6px;
     border: none;
