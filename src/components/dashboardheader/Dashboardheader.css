@@ -19,7 +19,7 @@
       padding-left: 6px;
   
   }
-  .header_input{
+form>input{
      width:300px;
      border:none;
      box-shadow:none;
