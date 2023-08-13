@@ -28,6 +28,7 @@ const Contacts = () => {
       allowed:''
     })
     const handleInputChange = (event, newInputValue) => {
+      setInputValue(newInputValue);
       const {name, value} = event.target;
       setFormData((prevFormData)=>({
         ...prevFormData,

@@ -7,11 +7,15 @@ import { useParams } from 'react-router-dom';
 import LoadingSpinner from '../../components/LoadSpinner/LoadSpinner';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./forms.css";
-import { Menu, MenuItem, Box,Button, ListItemIcon, ListItemText } from '@mui/material';
+import { Menu, MenuItem, TextField ,Box,Button, ListItemIcon, ListItemText } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Autocomplete from '@mui/material/Autocomplete';
 
 
-const Forms = (props) => {
+const FormUserPermissions = (props) => {
+    const [inputValue, setInputValue] = useState('');
+    const [selectedChoice, setSelectedChoice] = useState([]);
+    const [options, setOptions] = useState([]);
     const history = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedRow, setSelectedRow] = useState(null);
@@ -30,6 +34,12 @@ const Forms = (props) => {
         setAnchorEl(null);
         setSelectedRow(null);
       };
+      const handleInputChange = (event, newInputValue) => {
+        setInputValue(newInputValue);
+        const {name, value} = event.target;
+       
+        };
+      
     
       const handleOptionClick = (option) => {
         // Perform action based on selected option and row data
@@ -38,10 +48,7 @@ const Forms = (props) => {
             console.log('Selected option:', option);
             console.log('Selected row:', selectedRow.id);
             history(`/formdetails/${selectedRow.tableName}`)
-        } else if (option==='users'){
-          history(`/form-user-permissions/${selectedRow.tableName}`)
         }
-
         handleMenuClose();
       };
     const columns = [
@@ -82,11 +89,11 @@ const Forms = (props) => {
               </ListItemIcon>
               <ListItemText>Edit Design</ListItemText>
             </MenuItem>
-            <MenuItem onClick={() => handleOptionClick('users')}>
+            <MenuItem onClick={() => handleOptionClick('design')}>
               <ListItemIcon>
                 {/* Add your custom icon for each option */}
               </ListItemIcon>
-              <ListItemText>User Management</ListItemText>
+              <ListItemText>Add Users</ListItemText>
             </MenuItem>
             <MenuItem onClick={() => handleOptionClick('view')}>
               <ListItemIcon>
@@ -147,13 +154,24 @@ const Forms = (props) => {
 
   return (
     <div> 
-      <Button variant="contained" color="primary" onClick={handleAddContact}>
-          Create Form
-        </Button>
+      
        <h1>Available Forms</h1>
     
     {loading ? <LoadingSpinner /> : <div>
-    
+    <Autocomplete
+       multiple
+       freeSolo
+       options={options.map((option) => `${option.id} ${option.first_name} ${option.last_name}`)}
+        getOptionLabel={(option) => option}
+        value={selectedChoice}
+        onChange={(event, newValue) => {
+          setSelectedChoice(newValue);
+        
+        }}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+        renderInput={(params) => <TextField {...params} label="Select a choice" />}
+      />
        
       <Box >
       <DataGrid
@@ -177,4 +195,4 @@ const Forms = (props) => {
   )
 }
 
-export default Forms
+export default FormUserPermissions

@@ -12,7 +12,7 @@ const CreateForm = () => {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
     const history = useNavigate();
-    const handleInputChange = (event, newInputValue) => {
+    const handleInputChange =  (event, newInputValue) => {
         setInputValue(newInputValue);
         const {name, value} = event.target;
     setFormData((prevFormData)=>({
@@ -93,8 +93,8 @@ const CreateForm = () => {
        options={options.map((option) => `${option.id} ${option.first_name} ${option.last_name}`)}
         getOptionLabel={(option) => option}
         value={selectedChoice}
-        onChange={async (event, newValue) => {
-        await  setSelectedChoice(newValue);
+        onChange={ (event, newValue) => {
+         setSelectedChoice(newValue);
           
         }}
         inputValue={inputValue}

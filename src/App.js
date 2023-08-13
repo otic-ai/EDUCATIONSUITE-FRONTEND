@@ -17,6 +17,7 @@ import "./App.css";
 
 import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 import CreateForm from './pages/Forms/formCreate';
+import FormUserPermissions from './pages/Forms/FormUserPermsiions';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Signup" element={<Signup />} /> 
-        <Route exact path="/formdetails/:pk" element={<DynamicColumnsDataGrid />} />      
+        <Route exact path="/formdetails/:pk" element={<DynamicColumnsDataGrid />} />  
+        <Route exact path="/form-user-permissions/:pk" element={<FormUserPermissions />} />    
         <Route path='/' element={<Admindash/>}/>
         <Route exact path="/createForm" element={<CreateForm />} />
         <Route exact path="/formview/:name/:pk" element={<FormFillPage />}/>
