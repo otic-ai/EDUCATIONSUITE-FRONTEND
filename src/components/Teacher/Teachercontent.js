@@ -1,29 +1,156 @@
 import React from "react";
 import { useState } from "react";
 import "./Teachercontent.css";
+import { lessons } from "../../Data/lessons";
+import { piedata } from "../../Data/piechart";
+import { PieChart } from "react-minimal-pie-chart";
+import { history } from "../../Data/history";
+import { events } from "../../Data/upcomingevents";
+import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Contentanalysis from "../contentanalysis/Contentanalysis";
-import Headerdash from "../Headerdash/Header";
-import Sidebarteach from "../Sidebarteach/Sidebarteach";
-import Teacherhome from "../Teacherhome/Teacherhome";
 
 const Teachercontent = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedContent, setSelectedContent] = useState('home2'); // Default to 'home' content
+  const [data, setdata] = useState(piedata);
+  // clender
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleclick = () => {
-    setOpen(!open);
-  };
-
-  const handleContentClick = (content) => {
-    setSelectedContent(content);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
   return (
     <div className="content">
-      <Headerdash click={handleclick} />
-      <Sidebarteach onContentClick={handleContentClick} open={open} />
+      <header>
+        <h3>Teacher</h3>
+        <h3>Home/Teacher</h3>
+      </header>
       <Contentanalysis />
-      {selectedContent === 'home2' && <Teacherhome />}
+      <div className="content_subsection">
+        <div className="twosection">
+          <div className="uppersection">
+            <div className="lessons">
+              <div>
+                <span>Upcominglesson</span>
+                <span>View all Courses</span>
+              </div>
+              <hr />
+              <div>
+                {lessons.map((item, id) => {
+                  return (
+                    <div key={id} className="scheduleform">
+                      <div className="leftside">
+                        <h4>{item.name}</h4>
+                        <p>{item.desc}</p>
+                        <div className="schedulelist">
+                          <li>{item.dateicon} </li>
+                          <li>{item.date} </li>
+                          <span className="separator">|</span>
+                          <li>{item.timeicon} </li>
+                          <li>{item.time} </li>
+                        </div>
+                      </div>
+                      <div>
+                        <p>{item.status}</p>
+                        <button className="teacher_buttons">
+                          {item.option}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="piecahart">
+              <h3>Teaching Trend</h3>
+              <hr />
+              <p>Lessons Coverage</p>
+              <PieChart
+                data={data}
+                label={({ dataEntry }) =>
+                  `${dataEntry.title}: ${Math.round(dataEntry.percentage)}%`
+                }
+                style={{ width: "150px", height: "150px" }}
+                labelStyle={{
+                  color: "blue",
+                  fontSize: 10,
+                  fontWeight: "bold",
+                }}
+              />
+            </div>
+          </div>
+          <div className="teaching_history">
+            <header className="header">
+              <p>Teaching History</p>
+              <p>logo</p>
+            </header>
+            <hr />
+            <section className="history_lessons">
+              {history.map((item, id) => {
+                return (
+                  <div key={id} className="scheduleform">
+                    <div className="leftside">
+                      <h4>{item.name}</h4>
+                      <p>{item.desc}</p>
+                      <div className="schedulelist">
+                        <li>{item.dateicon} </li>
+                        <li>{item.date} </li>
+                        <span className="separator">|</span>
+                        <li>{item.timeicon} </li>
+                        <li>{item.time} </li>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        className="teacher_buttons"
+                        style={{
+                          backgroundColor:
+                            item.status === "Pending" ? "blue" : "green",
+                        }}>
+                        {item.status}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
+          </div>
+        </div>
+
+        <div>
+          <section id="calender">
+            <Calendar onChange={handleDateChange} value={selectedDate} />
+          </section>
+          <section id="upcomingevents">
+            <h3>upcomingevents</h3>
+            <header className="header">
+              <p>16 june</p>
+              <p>logo</p>
+            </header>
+            <hr />
+            <main>
+              {events.map((item, id) => {
+                return (
+                  <div key={id} className="scheduleform">
+                    <div className="leftside">
+                      <h4>{item.name}</h4>
+                      <p>{item.desc}</p>
+                      <div className="schedulelist">
+                        <li>{item.dateicon} </li>
+                        <li>{item.date} </li>
+                        <li>{item.timeicon} </li>
+                        <li>{item.time} </li>
+                      </div>
+                    </div>
+                    <div>
+                      <p>{item.range}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </main>
+          </section>
+        </div>
+      </div>
     </div>
   );
 };
