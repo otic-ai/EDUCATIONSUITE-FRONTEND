@@ -83,10 +83,7 @@ const FormFillPage = () => {
 
   survey.onComplete.add(alertResults);
 
-  return <div>
-    {loading ? <LoadingSpinner /> : <Survey model={survey} />}
-   
-   </div>;
+  return <Survey model={survey} />;
 }
 
 export default FormFillPage
