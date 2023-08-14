@@ -8,13 +8,13 @@ import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import SearchIcon from '@mui/icons-material/Search';
 
 import Avatar from '@mui/material/Avatar';
-const Dashboardheader = () => {
+const Dashboardheader = ({click}) => {
   return (
     <div className="dashboardheader">
       <div className="header_leftside">
         <img src={logo} alt="" />
         <div className="viewicon">
-          <ViewHeadlineIcon fontSize="large" color="primary" />
+          <button  onClick={click}><ViewHeadlineIcon fontSize="large" color="primary" /></button>
         </div>
         <div className="dashboardform">
           <SearchIcon fontSize="inherit" style={{ fontSize: '2rem' }} color="primary" />
