@@ -9,6 +9,7 @@ import { events } from "../../Data/upcomingevents";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Contentanalysis from "../contentanalysis/Contentanalysis";
+import Dashboardheader from '../../components/dashboardheader/Dashboardheader'
 
 const Teachercontent = () => {
   const [data, setdata] = useState(piedata);
@@ -20,6 +21,7 @@ const Teachercontent = () => {
   };
   return (
     <div className="content">
+      <Dashboardheader/>
       <header>
         <h3>Teacher</h3>
         <h3>Home/Teacher</h3>
