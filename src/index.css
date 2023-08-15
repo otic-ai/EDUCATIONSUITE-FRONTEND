@@ -43,7 +43,7 @@ body {
   
   .admin .sidebar .content li{
     display: flex;
-    color: gray;
+    color: whitesmoke;
     list-style: none;
     gap: 1rem;
   }

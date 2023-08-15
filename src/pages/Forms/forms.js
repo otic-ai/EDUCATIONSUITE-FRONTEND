@@ -56,10 +56,10 @@ const Forms = (props) => {
               throw new Error('Network response was not ok');
             }
             setLoading(true)
-            const jsonData = await response.json();
+           await response.json();
             window.location.reload();
             // Extracting 'name' property from each object
-            alert(jsonData.message)
+          
             setLoading(false)
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -68,6 +68,8 @@ const Forms = (props) => {
 
         handleMenuClose();
       };
+
+      
     const columns = [
         {
             field: 'details',
