@@ -17,12 +17,13 @@ const Teachersdash = () => {
       <section className="teachers_section">
         <Sidebar />
         <main>
-          <Contentheader />
+          {/* <Contentheader />
           <Formsearch />
           <Adminprofile />
           <Students />
           <Subjects />
-          <Timetable />
+          <Timetable /> */}
+          <Teachercontent />
         </main>
       </section>
       <Footer />

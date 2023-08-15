@@ -1,7 +1,7 @@
 import "./App.css";
 import Pricing from "./pages/Pricing/Pricing";
 import Admindashboard from "./pages/admindashboard/Admindashboard";
-import Landingpage from "./pages/landingpage/Landingpage.jsx";
+import Landingpage from "./pages/landingpage/Landingpage.js";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

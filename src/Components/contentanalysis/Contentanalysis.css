@@ -3,6 +3,7 @@
     align-items: center;
     justify-content:space-around;
     padding:1rem;
+    gap:5rem;
 }
 .content_analysis>div{
     display: flex;

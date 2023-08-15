@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    gap:1.5rem
 } 
 .lessons{
     padding: 1rem;
@@ -38,7 +39,6 @@
     align-items: center;
     
 }
-
 
 .piecahart{
     padding: 1rem;

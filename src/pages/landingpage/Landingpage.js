@@ -5,12 +5,8 @@ import Hero from "../../components/hero/Hero";
 const Landingpage = () => {
   return (
     <div className="landingpage">
-      {/* header */}
       <Header />
-
-      <Hero/>
-      {/* hero section*/}
-     
+      <Hero />
     </div>
   );
 };
