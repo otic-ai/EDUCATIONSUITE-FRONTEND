@@ -1,0 +1,34 @@
+{
+    "students": [
+      {
+        "id": 1,
+        "name": "Lubwama Eric",
+        "regno": "21/u/12",
+        "class": "S1"
+      },
+      {
+        "id": 2,
+        "name": "Ssentamu jonah",
+        "regno": "21/u/12",
+        "class": "S1"
+      },
+      {
+        "id": 3,
+        "name": "Mercy johnson",
+        "regno": "21/u/12",
+        "class": "S1"
+      },
+      {
+        "id": 4,
+        "name": "rusoke marvin",
+        "regno": "21/u/12",
+        "class": "S1"
+      },
+      {
+        "id": "5",
+        "name": "Nakakande Viola",
+        "regno": "23/u/89",
+        "class": "s6"
+      }
+    ]
+  }
