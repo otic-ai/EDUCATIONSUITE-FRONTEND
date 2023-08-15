@@ -73,8 +73,10 @@ justify-content: flex-end;
 gap: 1rem;
 }
 .payments .download button{
-    background: blue;
+    background: #040458;
     border: none;
     color: white;
     border-radius: 5px;
+    height: 2em;
+    width: 8em;
 }

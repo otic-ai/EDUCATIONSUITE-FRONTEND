@@ -45,7 +45,7 @@ const Adminstudent = () => {
       <label>class</label>
       <input type='text' name='class' onChange={e => setInputData({...inputData, class:e.target.value})}/>
       </div>
-      <button>Submit</button>
+      <button>Add Student</button>
     </form>
     <table>
         <tr>

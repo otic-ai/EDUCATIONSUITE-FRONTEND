@@ -1,4 +1,11 @@
-
+.payments form button{
+    background: #040458;
+    width: 50%;
+    color: white;
+    margin: auto;
+    border-radius: 5px;
+    height: 3em;
+}
 .payments table,
 .payments_effected table{
     width: 100%;
@@ -31,3 +38,4 @@ th{
 .payments{
     padding: 0 5%;
 }
+
