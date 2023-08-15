@@ -163,7 +163,7 @@ const CreateWorkspaces = () => {
             <div className="formcontrol">
             <div>
               <label>Institution Logo<span className="required">*</span></label>
-              <input type="text"
+              <input type="file"
               id="logo"
               name="logo"
               value={formData.logo}
