@@ -66,7 +66,7 @@ function DynamicColumnsDataGrid() {
        
       const colz =   [{
         field: 'details',
-        headerName: 'Details',
+        headerName: '',
         width: 200,
         disableExport: true,
         headerClassName: 'custom-header', 
