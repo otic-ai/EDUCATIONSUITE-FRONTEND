@@ -1,0 +1,52 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Lubwama Eric",
+      "regno": "21/u/12",
+      "class": "S1"
+    },
+    {
+      "id": 2,
+      "name": "Ssentamu jonah",
+      "regno": "21/u/12",
+      "class": "S1"
+    },
+    {
+      "id": 3,
+      "name": "Mercy johnson",
+      "regno": "21/u/12",
+      "class": "S1"
+    },
+    {
+      "id": 4,
+      "name": "rusoke marvin",
+      "regno": "21/u/12",
+      "class": "S1"
+    },
+    {
+      "id": "5",
+      "name": "Nakakande Viola",
+      "regno": "23/u/89",
+      "class": "s6"
+    },
+    {
+      "id": "6",
+      "name": "JORAM KAKANDE",
+      "regno": "23/u/89",
+      "class": "s6"
+    },
+    {
+      "id": "7",
+      "name": "BEN KIWANUKA",
+      "regno": "23/u/89",
+      "class": "s6"
+    },
+    {
+      "id": "8",
+      "name": "JOTHAM DERICK",
+      "regno": "23/u/89",
+      "class": "s6"
+    }
+  ]
+}

@@ -9,7 +9,6 @@ const Timetable = () => {
       <main>
         <h2>Timetable</h2>
         <table>
-          <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
@@ -20,10 +19,6 @@ const Timetable = () => {
               <th>date</th>
               <th>action</th>
             </tr>
-          </thead>
-
-          <tbody>
-            <hr />
             {timetable.map((item, id) => {
               return (
                 <tr>
@@ -41,7 +36,7 @@ const Timetable = () => {
                 </tr>
               );
             })}
-          </tbody>
+
         </table>
       </main>
     </div>
