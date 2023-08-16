@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import EChartsVisualization from './EChartsVisualization';
 import { Menu, MenuItem, Box,Button, ListItemIcon, ListItemText } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 function DynamicColumnsDataGrid() {
   let { proxy, authTokens } = useContext(AuthContext);
@@ -69,7 +71,7 @@ function DynamicColumnsDataGrid() {
         disableExport: true,
         headerClassName: 'custom-header', 
         renderCell: (params) => (
-          <Button variant="contained" color="primary" onClick={async()=>{ 
+          <IconButton variant="contained" color="primary" onClick={async()=>{ 
             const result = window.confirm('Do you want to want to delete this field?');
             if (result) {
             try {
@@ -87,7 +89,7 @@ function DynamicColumnsDataGrid() {
              
               }}
 
-          }} >Delete</Button>
+          }} > <DeleteIcon /></IconButton>
         ),
       },...generatedColumns]
          setColumns(colz);
