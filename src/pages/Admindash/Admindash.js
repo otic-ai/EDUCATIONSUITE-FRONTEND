@@ -21,6 +21,7 @@ import Forms from '../Forms/forms';
 import Subjects from '../Subjects/Subjects';
 import AuthContext from '../../utils/AuthContext';
 import Timetable from '../../components/timetable/Timetable';
+import DataManagement from '../../Data/DataManagement';
 // Import other content components as needed
 
 function Admindash() {
@@ -81,6 +82,7 @@ function Admindash() {
       {selectedContent === 'workspaces' && <Workspaces/>}
       {selectedContent === 'subjects' && <Subjects/>}
       {selectedContent === 'timetable' && <Timetable/>}
+      {selectedContent === 'data' && <DataManagement/>}
       {selectedContent === 'teachers' && <Forms start={true} />}
       {/* Add more content components based on the selectedContent */}
       {/* For example: */}

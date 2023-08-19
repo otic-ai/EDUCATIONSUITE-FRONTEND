@@ -10,6 +10,11 @@ import { Menu, MenuItem, Box,Button, ListItemIcon, ListItemText } from '@mui/mat
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import { GridFilterOperator } from '@mui/x-data-grid';
+import { isValid, isDate } from 'date-fns'; 
+
+
+
 
 function DynamicColumnsDataGrid() {
   let { proxy, authTokens } = useContext(AuthContext);
@@ -20,10 +25,12 @@ function DynamicColumnsDataGrid() {
   const [open, setOpen] = useState(false);
  
 
-  const handleAddRow = () => {
+  const handleAddRow = async () => {
     const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1;
     const newRow = { id: newId, ...columns.reduce((acc, col) => ({ ...acc, [col.field]: '' }), {}) };
-    setData([...data, newRow]);
+   newRow['ID']= newId;
+    setData([ newRow,...data]);
+    
   };
 
   
@@ -33,7 +40,10 @@ function DynamicColumnsDataGrid() {
     setOpen(!open);
   };
 
- 
+  const defaultSortModel = [
+    { field: 'id', sort: 'desc' }, // Set 'sort' to 'desc' for descending order
+  ];
+  
 
   useEffect(() => {
     // Simulating API call
@@ -45,7 +55,8 @@ function DynamicColumnsDataGrid() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authTokens.access}`,
           },
-        });
+        }
+        );
         const jsonData = await response.json();
 
         // Set data
@@ -56,26 +67,35 @@ function DynamicColumnsDataGrid() {
         // Generate columns dynamically based on the keys in the first row
         if (dataWithIds.length > 0) {
           const columnFields = Object.keys(jsonData[0]);
-          const generatedColumns = columnFields.map((field) => ({
+          const generatedColumns = columnFields.map((field) => (
+          
+            {
+              
             field,
             headerName: field,
             width: 150,
             headerClassName: 'custom-header',
-            editable: true, // Make cells editable
+           
+           type:typeof dataWithIds[0][field] === 'number' ? 'number': isValid(field) ? 'dateTime':'string',
+            editable: (typeof dataWithIds[0][field] === 'number' || typeof dataWithIds[0][field] === 'string' || dataWithIds[0][field] !=='DATE') && field !=='ID' ? true : false, // Make cells editable
           }   ));
        
       const colz =   [{
         field: 'details',
         headerName: '',
-        width: 200,
+        editable:false,
+        width: 25,
         disableExport: true,
         headerClassName: 'custom-header', 
         renderCell: (params) => (
           <IconButton variant="contained" color="primary" onClick={async()=>{ 
-            const result = window.confirm('Do you want to want to delete this field?');
+            const firstKey = Object.keys(params.row)[0];
+  const firstValue = params.row[firstKey];
+            const result = window.confirm(`Do you want to want to delete this field?`);
             if (result) {
+              const idds = Object.keys(params.row)[0]
             try {
-              const response = await fetch(`${proxy}/default/deleteform/${pk}/${params.row.id}`, {
+              const response = await fetch(`${proxy}/default/deleteform/${pk}/${firstValue }`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -117,7 +137,6 @@ function DynamicColumnsDataGrid() {
         columns={columns}
         processRowUpdate= { async (updatedRow, originalRow) => {
         
-
           const result = window.confirm('Do you want to want to save change?');
           if (result) {
           try {
@@ -130,18 +149,23 @@ function DynamicColumnsDataGrid() {
               body:JSON.stringify(updatedRow),
             });
             const jsonData = await response.json();
-            alert(jsonData.message)
+            if (jsonData.message !=='Successful'){
+              alert('Invalid Format for the column')
+              return originalRow;
+            }
+          return updatedRow  
           
           } catch (error) {
            
             }} else {
-                window.location.reload();
+       
+            return originalRow;
             }
           
         } }
         components={{ Toolbar: GridToolbar }}
         slotProps={{ toolbar: { printOptions: { hideToolbar: true ,hideFooter: true}} }}
-        
+        sortModel={defaultSortModel}
       />
      
     </div>

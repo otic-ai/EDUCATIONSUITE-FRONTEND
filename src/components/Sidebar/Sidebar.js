@@ -1,7 +1,7 @@
 import React ,{useContext, useEffect, useState }from 'react'
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAward, faBars, faMarker,faBell,faReceipt, faSignOut,faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
+import { faAward, faBars, faDatabase,faMarker,faBell,faReceipt, faSignOut,faBookReader, faChalkboardTeacher, faClipboardList, faCog, faFileAlt, faGraduationCap, faHome, faHotel, faMoneyBill, faShieldAlt, faTable, faUserFriends, faVectorSquare } from '@fortawesome/free-solid-svg-icons'
 import AuthContext from "../../utils/AuthContext";
 import { Link } from 'react-router-dom';
 import Dropdown from '../DropDown/DropDown';
@@ -47,6 +47,7 @@ export default function Sidebar({open,onContentClick}) {
       <li onClick={() => onContentClick('home')}>< FontAwesomeIcon className="menu" icon={faHome}/>Home</li>
        <li onClick={() => onContentClick('students')}>< FontAwesomeIcon className="menu" icon={faGraduationCap}/>Students</li>
        <li onClick={() => onContentClick('teachers')}>< FontAwesomeIcon className="menu" icon={faReceipt}/>Forms</li>
+       <li onClick={() => onContentClick('data')}>< FontAwesomeIcon className="menu" icon={ faDatabase}/>Data</li>
        <li onClick={() => onContentClick('workspace')}>< FontAwesomeIcon className="menu" icon={faHotel}/>Workspace</li>
        <li onClick={() => onContentClick('subjects')}>< FontAwesomeIcon className="menu" icon={faBookReader}/>Subjects</li>
       </ul>
