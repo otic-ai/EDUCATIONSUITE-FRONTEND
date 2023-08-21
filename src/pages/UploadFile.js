@@ -59,7 +59,7 @@ function InputWithFileModal() {
         
           });
           const data =  response.json();
-        
+          setOpen(false);
          
         } catch (error) {
          
