@@ -18,6 +18,11 @@ import "./App.css";
 import Teachersdash from "./pages/teachersdashboard/Teachersdash";
 import CreateForm from './pages/Forms/formCreate';
 import FormUserPermissions from './pages/Forms/FormUserPermsiions';
+import Reportdesigner from './pages/ReportDesigner/reportdesigner';
+
+
+
+
 
 function App() {
   return (
@@ -26,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/landing" element={<Landingpage />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/report" element={<Reportdesigner />} />
         <Route path="/Pricing" element={<Pricing />} />
         <Route path="/Signup" element={<Signup />} /> 
         <Route exact path="/formdetails/:pk" element={<DynamicColumnsDataGrid />} />  
@@ -37,7 +43,9 @@ function App() {
         <Route path="/Teacher" element={<Teachersdash />} />
         <Route path="/teachers" element={<Teachercontent />} />
       </Routes>
+      
       </AuthProvider>
+    
     </div>
   );
 }

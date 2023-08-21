@@ -16,13 +16,34 @@ import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
 import LoadingSpinner from '../../components/LoadSpinner/LoadSpinner';
 import Forms from '../Forms/forms';
-
+import ChatBot from 'react-simple-chatbot';
 
 import Subjects from '../Subjects/Subjects';
 import AuthContext from '../../utils/AuthContext';
 import Timetable from '../../components/timetable/Timetable';
 import DataManagement from '../../Data/DataManagement';
 // Import other content components as needed
+
+
+const steps = [
+  {
+      id: '0',
+      message: 'Hey Geek!',
+      end: true
+  }, {
+    id: '1',
+
+    // This message appears in
+    // the bot chat bubble
+    message: 'Please write your username',
+   
+},
+];
+const config = {
+
+  floating: true,
+};
+
 
 function Admindash() {
   const [open, setOpen] = useState(false);
@@ -88,10 +109,11 @@ function Admindash() {
       {/* For example: */}
       {/* {selectedContent === 'awards' && <AdminAwards />} */}
       {/* {selectedContent === 'departments' && <AdminDepartments />} */}
-      {/* {selectedContent === 'revenue' && <AdminRevenue />} */}
+      {/*  <ChatBot   {...config} steps={steps} /> {selectedContent === 'revenue' && <AdminRevenue />} */}
   
     </div>}
   </div>
+
   </div>
   );
 }

@@ -7,6 +7,8 @@ import AuthContext from '../utils/AuthContext';
 import { Menu, MenuItem, Box,Button, ListItemIcon, ListItemText } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from "axios";
+import InputWithFileModal from '../pages/UploadFile';
+
 
 const DataManagement = () => {
     let { proxy, authTokens } = useContext(AuthContext);
@@ -157,13 +159,8 @@ const DataManagement = () => {
   
   return (
     <div>
-       <input
-        type="file"
-        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        onChange={handleFileChange}
-      />   <Button variant="contained" color="primary" onClick={handleUpload}>
-      Upload File
-    </Button>
+      <InputWithFileModal />
+     
     <DataGrid  rows={rows} columns={columns} pageSize={5} />
   </div>
   )
