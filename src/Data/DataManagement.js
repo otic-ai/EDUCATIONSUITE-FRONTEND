@@ -115,6 +115,7 @@ const DataManagement = () => {
       { field: 'id',  headerName: 'ID', width: 70 },
      
       { field: 'name',headerName: 'Table Name', width: 250 },
+      { field: 'size',headerName: 'Size', width: 250 },
       {
         field: 'Actions',
    
@@ -155,7 +156,7 @@ const DataManagement = () => {
 },
     ];
   
-    const rows = tableNames.map((tableName, index) => ({ id: index + 1, name: tableName.title ,tablename: tableName.name}));
+    const rows = tableNames.map((tableName, index) => ({ id: index + 1, name: tableName.title ,size:tableName.size,tablename: tableName.name}));
   
   return (
     <div>
