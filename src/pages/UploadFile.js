@@ -120,10 +120,7 @@ function InputWithFileModal() {
               error={wordExists}
               helperText={wordExists ? 'Name already exists. Choose another.' : ''}
             required/>
-            <input type="file" inputProps={{
-          accept:".csv,.xlsx,.xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ,// Define accepted file types here
-          name: 'customFileName', // Set the desired name for the uploaded file
-        }} onChange={handleFileChange} required/>
+            <input type="file"   accept=".xlsx, .csv" onChange={handleFileChange} required/>
             <Button type="submit">Submit</Button>
           </form>
         </div>
