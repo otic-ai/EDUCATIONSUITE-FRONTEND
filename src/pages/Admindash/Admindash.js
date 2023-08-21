@@ -16,7 +16,7 @@ import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
 import LoadingSpinner from '../../components/LoadSpinner/LoadSpinner';
 import Forms from '../Forms/forms';
-import ChatBot from 'react-simple-chatbot';
+
 
 import Subjects from '../Subjects/Subjects';
 import AuthContext from '../../utils/AuthContext';
