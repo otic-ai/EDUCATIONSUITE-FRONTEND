@@ -74,7 +74,7 @@ function DynamicColumnsDataGrid() {
               
             field,
             headerName: field,
-            width: 150,
+         
             headerClassName: 'custom-header',
            
            type:typeof dataWithIds[0][field] === 'number' ? 'number': isValid(field) ? 'dateTime':'string',
@@ -85,7 +85,7 @@ function DynamicColumnsDataGrid() {
         field: 'details',
         headerName: '',
         editable:false,
-        width: 25,
+       
         disableExport: true,
         headerClassName: 'custom-header', 
         renderCell: (params) => (

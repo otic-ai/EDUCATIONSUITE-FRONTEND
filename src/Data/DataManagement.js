@@ -112,14 +112,13 @@ const DataManagement = () => {
     }, []);
   
     const columns = [
-      { field: 'id',  headerName: 'ID', width: 70 },
+      { field: 'id',  headerName: 'ID' },
      
-      { field: 'name',headerName: 'Table Name', width: 250 },
-      { field: 'size',headerName: 'Size', width: 250 },
+      { field: 'name',headerName: 'Table Name'},
+      { field: 'size',headerName: 'Size' },
       {
         field: 'Actions',
    
-        width: 100,
      
         renderCell: (params) => (
           <div>
