@@ -10,8 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../../utils/AuthContext';
 
@@ -94,6 +94,7 @@ const Adminstudent = () => {
   let { proxy, authTokens } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState('');
   const [data, setData] = useState([]);
+  const [increment, setIncrement] = useState(0);
   const [formData, setFormData] = useState({
     student_number: '',
   });
@@ -149,9 +150,14 @@ const Adminstudent = () => {
          'Authorization': `Bearer ${authTokens.access}`,
           },
     
+      }).then(response =>{
+        if (response.data.message !=='Success'){
+          alert(response.data.message)
+        }
+      
+        setIncrement(increment+1)
+      setInputValue('')
       });
-      const data =  response.json();
-       alert(data.message)
      
     } catch (error) {
      
@@ -173,7 +179,7 @@ const Adminstudent = () => {
    setAdditionalFields(data.form.columns)
     }
     fetchs()
-  },[])
+  },[increment])
 
   return (
     <div className='payments'>
@@ -181,7 +187,7 @@ const Adminstudent = () => {
         <Button variant="contained" onClick={openModal}>Add New Field</Button>
         <form onSubmit={handleSubmit} style={{width:'100%'}}>
           <div style={{display:'grid',gap:'20px', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 1fr)'}}>
-          <div >
+          <div style={{marginLeft:'0px'}} >
             <TextField  style={{width:'400px'}}
               label="Enter Student name"
               value={inputValue}
@@ -190,9 +196,32 @@ const Adminstudent = () => {
               helperText={wordExists ? 'Student Number  already exists. Choose another.' : ''}
              
             />  
+            
           </div>
           {additionalFields.map((field, index) => (
-            <div key={index} >
+            <div key={index} style={{display:'flex',marginLeft:'0px',flexDirection:'row'}} >
+           <button onClick={async ()=>{
+               let response = await fetch(`${proxy}/default/deleteformfield`, {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization': `Bearer ${authTokens.access}`,
+                },
+                body:JSON.stringify(field)
+            })
+
+            await response.json()
+            setIncrement(increment+1)
+           }} style={{
+        backgroundColor: 'transparent',
+        width: '15px',
+        border: 'none', // To remove default button styling
+        padding: '0', // To remove default padding
+        cursor: 'pointer', // To indicate it's clickable
+      }} >
+           <DeleteIcon style={{color:'black'}} />
+           </button>
+             <div style={{width:'10px'}} /> 
               <TextField style={{width:'400px'}}
               label={field.name}
                 type={field.type}
@@ -201,9 +230,10 @@ const Adminstudent = () => {
                 required={field.required}
                 onChange={(e) => handleFieldChange(index, e.target.value)}
            />
+        
             </div>
           ))}</div>
-          <button className="formbutton">Submit</button>
+          <button type='submit' className="formbutton">Submit</button>
         </form>
     
 

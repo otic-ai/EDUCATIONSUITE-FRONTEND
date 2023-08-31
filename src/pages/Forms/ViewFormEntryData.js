@@ -78,7 +78,7 @@ function DynamicColumnsDataGrid() {
             headerClassName: 'custom-header',
            
            type:typeof dataWithIds[0][field] === 'number' ? 'number': isValid(field) ? 'dateTime':'string',
-            editable: (typeof dataWithIds[0][field] === 'number' || typeof dataWithIds[0][field] === 'string' || dataWithIds[0][field] !=='DATE') && field !=='ID' ? true : false, // Make cells editable
+            editable: (typeof dataWithIds[0][field] === 'number' || typeof dataWithIds[0][field] === 'string' || dataWithIds[0][field] !=='DATE') && field !=='ID' && field !=='STUDENT NUMBER' ? true : false, // Make cells editable
           }   ));
        
       const colz =   [{
