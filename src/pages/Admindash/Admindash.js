@@ -16,12 +16,11 @@ import Adminworkspace from '../../components/Adminworkspace/Adminworkspace';
 import Workspaces from '../Workspaces/Workspaces';
 import LoadingSpinner from '../../components/LoadSpinner/LoadSpinner';
 import Forms from '../Forms/forms';
-
-
 import Subjects from '../Subjects/Subjects';
 import AuthContext from '../../utils/AuthContext';
 import Timetable from '../../components/timetable/Timetable';
 import DataManagement from '../../Data/DataManagement';
+import Configuration from '../Configuration/Configuration';
 // Import other content components as needed
 
 
@@ -102,6 +101,7 @@ function Admindash() {
       {selectedContent === 'workspace' && <Adminworkspace />}
       {selectedContent === 'workspaces' && <Workspaces/>}
       {selectedContent === 'subjects' && <Subjects/>}
+      {selectedContent === 'configuration' && <Configuration />}
       {selectedContent === 'timetable' && <Timetable/>}
       {selectedContent === 'data' && <DataManagement/>}
       {selectedContent === 'teachers' && <Forms start={true} />}

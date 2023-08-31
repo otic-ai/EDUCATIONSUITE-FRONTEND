@@ -186,9 +186,9 @@ const Adminstudent = () => {
      
         <Button variant="contained" onClick={openModal}>Add New Field</Button>
         <form onSubmit={handleSubmit} style={{width:'100%'}}>
-          <div style={{display:'grid',gap:'20px', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 1fr)'}}>
+          <div style={{display:'grid',gap:'10px', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 1fr)'}}>
           <div style={{marginLeft:'0px'}} >
-            <TextField  style={{width:'400px'}}
+            <TextField  style={{width:'400px', maxWidth:'70vw'}}
               label="Enter Student name"
               value={inputValue}
               onChange={handleInputChange}
@@ -199,7 +199,7 @@ const Adminstudent = () => {
             
           </div>
           {additionalFields.map((field, index) => (
-            <div key={index} style={{display:'flex',marginLeft:'0px',flexDirection:'row'}} >
+            <div key={index} style={{display:'flex',marginLeft:'0px',gap:'5px',flexDirection:'row'}} >
            <button onClick={async ()=>{
                let response = await fetch(`${proxy}/default/deleteformfield`, {
                 method:'POST',
@@ -221,8 +221,8 @@ const Adminstudent = () => {
       }} >
            <DeleteIcon style={{color:'black'}} />
            </button>
-             <div style={{width:'10px'}} /> 
-              <TextField style={{width:'400px'}}
+             <div style={{width:'2px'}} /> 
+              <TextField style={{width:'400px',maxWidth:'65vw'}}
               label={field.name}
                 type={field.type}
                 name={field.name}

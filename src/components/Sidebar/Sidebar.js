@@ -49,6 +49,7 @@ export default function Sidebar({open,onContentClick}) {
        <li onClick={() => onContentClick('teachers')}>< FontAwesomeIcon className="menu" icon={faReceipt}/>Forms</li>
        <li onClick={() => onContentClick('data')}>< FontAwesomeIcon className="menu" icon={ faDatabase}/>Data</li>
        <li onClick={() => onContentClick('workspace')}>< FontAwesomeIcon className="menu" icon={faHotel}/>Workspace</li>
+       <li onClick={() => onContentClick('configuration')}>< FontAwesomeIcon className="menu" icon={faBookReader}/>Configuration</li>
        <li onClick={() => onContentClick('subjects')}>< FontAwesomeIcon className="menu" icon={faBookReader}/>Subjects</li>
       </ul>
       <button>Management</button>
