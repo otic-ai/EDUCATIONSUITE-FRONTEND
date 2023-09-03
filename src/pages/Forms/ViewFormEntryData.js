@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, useGridApiContext } from '@mui/x-data-grid';
 import { useNavigate } from "react-router-dom";
+import Select from '@mui/material/Select';
 import AuthContext from '../../utils/AuthContext';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Headerdash/Header';
@@ -12,14 +13,68 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { GridFilterOperator } from '@mui/x-data-grid';
 import { isValid, isDate } from 'date-fns'; 
+import axios from 'axios';
 
+function SelectEditInputCell(props) {
+  let { proxy, authTokens } = useContext(AuthContext);
+  const { id, value, field } = props;
+  const[availableclass,setAvailableclass] = useState([])
+  const apiRef = useGridApiContext();
 
+  const handleChange = async (event) => {
+    await apiRef.current.setEditCellValue({ id, field, value: event.target.value });
+    apiRef.current.stopCellEditMode({ id, field });
+  };
+  useEffect(()=>{
+    const gettable = async()=>{
+      const response = await axios.get(`${proxy}/default/config_tables`, {
+       
+        headers: {    
+        "content-type": "application/json",
+         'Authorization': `Bearer ${authTokens.access}`,
+          },
+      
+      }).then(response =>{
+       
+    setAvailableclass(response.data.class)
+      });
+    }
+gettable()
+  },[])
+if (field ==='CLASS'){
+  return (
+    <Select
+      value={value}
+      onChange={handleChange}
+      size="small"
+      sx={{ height: 1 }}
+      native
+      autoFocus
+    >
+      {
+          availableclass.map((item, index) => (
+            <option key={index} >{item}</option>
+           ))
+      }
+ 
+    
+    </Select>
+  );
+} else {
+
+  
+}}
+
+const renderSelectEditInputCell = (params) => {
+  return <SelectEditInputCell {...params} />;
+};
 
 
 
 function DynamicColumnsDataGrid() {
   let { proxy, authTokens } = useContext(AuthContext);
   const [data, setData] = useState([]);
+  const [edittype, setEdittype] = useState('string');
   const { pk } = useParams();
   const [columns, setColumns] = useState([]);
   const history = useNavigate();
@@ -44,6 +99,10 @@ function DynamicColumnsDataGrid() {
   const defaultSortModel = [
     { field: 'id', sort: 'desc' }, // Set 'sort' to 'desc' for descending order
   ];
+  function isValidDate(dateString) {
+    const date = new Date(dateString);
+    return !isNaN(date.getTime());
+  }
   
 
   useEffect(() => {
@@ -68,20 +127,35 @@ function DynamicColumnsDataGrid() {
         // Generate columns dynamically based on the keys in the first row
         if (dataWithIds.length > 0) {
           const columnFields = Object.keys(jsonData[0]);
-          const generatedColumns = columnFields.map((field) => (
+          const generatedColumns = columnFields.map((field) => {
           
-            {
-              
-            field,
-            headerName: field,
-         
-            headerClassName: 'custom-header',
-           
-           type:typeof dataWithIds[0][field] === 'number' ? 'number': isValid(field) ? 'dateTime':'string',
-            editable: (typeof dataWithIds[0][field] === 'number' || typeof dataWithIds[0][field] === 'string' || dataWithIds[0][field] !=='DATE') && field !=='ID' && field !=='STUDENT NUMBER' ? true : false, // Make cells editable
-          }   ));
+             const columnConfig = {
+    field,
+    headerName: field,
+    width: 200,
+    headerClassName: 'custom-header',
+    editable: (typeof dataWithIds[0][field] === 'number' || typeof dataWithIds[0][field] === 'string' || dataWithIds[0][field] !== 'DATE') && field !== 'ID'  && field !== 'DATE' && field !== 'ENTRY DATE'  ? true : false, // Make cells editable
+  };
+
+  if (field === 'CLASS') {
+    columnConfig.renderEditCell = renderSelectEditInputCell;
+  }
+  
+if (isValidDate(dataWithIds[0][field])){
+   columnConfig.type = 'date'
+   columnConfig.valueGetter = (params) => {
+    const dateString = params.row[field]; 
+    return  new Date(dateString); 
+  }
+} else {
+  columnConfig.type = typeof dataWithIds[0][field] === 'number' ? 'number' :'string'
+}
+  return columnConfig;
+        });
        
-      const colz =   [{
+      const colz =   [
+       
+        {
         field: 'details',
         headerName: '',
         editable:false,

@@ -14,6 +14,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../../utils/AuthContext';
+import { InputLabel } from '@mui/material';
+
 
 const AddFieldModal = ({ isOpen, onClose, onAddField }) => {
   const [fieldType, setFieldType] = useState('text');
@@ -93,6 +95,8 @@ const AddFieldModal = ({ isOpen, onClose, onAddField }) => {
 const Adminstudent = () => {
   let { proxy, authTokens } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState('');
+  const [availableclass, setAvailableclass] = useState('');
+  const [classlists, setClasslists] = useState([]);
   const [data, setData] = useState([]);
   const [increment, setIncrement] = useState(0);
   const [formData, setFormData] = useState({
@@ -139,7 +143,7 @@ const Adminstudent = () => {
     e.preventDefault();
     if (disallowedWords.includes(formData.studentno)) { setErrorMessage('Student Number exists disallowed word.'); }
      else { 
-      const formValues = { ...formData,student_number: inputValue  }; additionalFields.forEach((field) => { formValues[field.name] = field.value; formValues[`${field.name}_type`] = field.type; formValues[`${field.name}_required`] = field.required; }); 
+      const formValues = { ...formData,student_number: inputValue,class:availableclass  }; additionalFields.forEach((field) => { formValues[field.name] = field.value; formValues[`${field.name}_type`] = field.type; formValues[`${field.name}_required`] = field.required; }); 
    
      setErrorMessage('');
      try {
@@ -165,6 +169,10 @@ const Adminstudent = () => {
     }
     }
   };
+  const handleChange = (event)=>{
+    const newValue = event.target.value;
+    setAvailableclass(newValue);
+  }
   useEffect(()=>{
     const fetchs = async()=>{
       let response = await fetch(`${proxy}/default/get_form_and_valid_student_numbers`, {
@@ -176,7 +184,9 @@ const Adminstudent = () => {
     })
     let data = await response.json()
    setDisallowedWords(data.student_numbers)
+    setClasslists(data.class_list)
    setAdditionalFields(data.form.columns)
+  
     }
     fetchs()
   },[increment])
@@ -185,8 +195,8 @@ const Adminstudent = () => {
     <div className='payments'>
      
         <Button variant="contained" onClick={openModal}>Add New Field</Button>
-        <form onSubmit={handleSubmit} style={{width:'100%'}}>
-          <div style={{display:'grid',gap:'10px', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 1fr)'}}>
+        <form onSubmit={handleSubmit} style={{width:'100%'}} fullWidth>
+          <div style={{display:'grid',gap:'10px', gridTemplateColumns:'repeat(auto-fit, minmax(400px, 0fr)'}}>
           <div style={{marginLeft:'0px'}} >
             <TextField  style={{width:'400px', maxWidth:'70vw'}}
               label="Enter Student name"
@@ -194,10 +204,30 @@ const Adminstudent = () => {
               onChange={handleInputChange}
               error={wordExists}
               helperText={wordExists ? 'Student Number  already exists. Choose another.' : ''}
-             
+             required
             />  
             
           </div>
+          <Box sx={{ maxWidth: 350, marginLeft:'40px' }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Class</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={availableclass}
+          label="Class"
+          onChange={handleChange}
+        required
+        >{classlists.map((option, index) => (
+
+    <MenuItem   key={index} value={option}>{option}</MenuItem>
+
+))}
+
+          
+        </Select>
+      </FormControl>
+    </Box>
           {additionalFields.map((field, index) => (
             <div key={index} style={{display:'flex',marginLeft:'0px',gap:'5px',flexDirection:'row'}} >
            <button onClick={async ()=>{
@@ -222,7 +252,7 @@ const Adminstudent = () => {
            <DeleteIcon style={{color:'black'}} />
            </button>
              <div style={{width:'2px'}} /> 
-              <TextField style={{width:'400px',maxWidth:'65vw'}}
+              <TextField style={{width:'400px'}}
               label={field.name}
                 type={field.type}
                 name={field.name}
